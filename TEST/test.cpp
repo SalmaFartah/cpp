@@ -23,9 +23,7 @@ test::~test()
 int main()
 {
 
-    std::vector<int> vec;
-    vec.begin();
-    vec.end();
+    test var;
 
     return 0;
 }

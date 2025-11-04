@@ -45,7 +45,7 @@ int		main( void )
 		  it.first != acc_end && it.second != dep_end;
 		  ++(it.first), ++(it.second) ) {
 
-		(*(it.first)).makeDeposit( *(it.second) );
+		(*(it.first)).makeDeposit( *(it.second) ); // *(it.first) points on the accounts object
 	}
 
 	Account::displayAccountsInfos();

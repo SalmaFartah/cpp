@@ -1,10 +1,10 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int main()
 {
     int index;
     int contacts;
-    phonebook mybook;
+    PhoneBook mybook;
     std::string line;
 
     index = 0;

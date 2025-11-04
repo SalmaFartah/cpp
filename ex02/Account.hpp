@@ -42,15 +42,15 @@ private:
 
 	static int	_nbAccounts;
 	static int	_totalAmount;
-	static int	_totalNbDeposits;
-	static int	_totalNbWithdrawals;
+	static int	_totalNbDeposits; // total dyal deposits 
+	static int	_totalNbWithdrawals; // total dyal na9is
 
 	static void	_displayTimestamp( void );
 
 	int				_accountIndex;
 	int				_amount;
-	int				_nbDeposits;
-	int				_nbWithdrawals;
+	int				_nbDeposits; // sh7al versa kol account mn mra
+	int				_nbWithdrawals; // sh7al khrej kol account mn mra 
 
 	Account( void );
 

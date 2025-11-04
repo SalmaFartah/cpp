@@ -1,4 +1,4 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 std::string getvline(std::string prompt)
 {
@@ -11,7 +11,7 @@ std::string getvline(std::string prompt)
 	return line;
 }
 
-void phonebook::add_contact(int i)
+void PhoneBook::add_contact(int i)
 {
 	std::string line;
 
@@ -71,7 +71,7 @@ int ifdigit(std::string str)
 	return 1;
 }
 
-void phonebook::search(int size)
+void PhoneBook::search(int size)
 {
 	std::string	firstName;
 	std::string	lastName;
@@ -81,7 +81,7 @@ void phonebook::search(int size)
 	i = 0;
 	if (size == 0)
 	{
-		std::cout << "PhoneBook empty !" << std::endl;
+		std::cout << "phonebook empty !" << std::endl;
 		return ;
 	}
 
