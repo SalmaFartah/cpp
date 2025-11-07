@@ -1,6 +1,6 @@
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror #-std=c++98
 
 SRC =	tests.cpp\
 		Account.cpp\
@@ -9,13 +9,13 @@ OBJ = $(SRC:.cpp=.o)
 
 NAME = bank
 
-%.o : %.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
+%.o : %.cpp Account.hpp
+	@$(CC) $(CXXFLAGS) -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJ) Account.hpp
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean :
 	@rm -rf $(OBJ)

@@ -3,6 +3,7 @@
 std::string getvline(std::string prompt)
 {
 	std::string line;
+
 	while (line.empty())
 	{
 		std::cout << prompt;
@@ -40,15 +41,7 @@ std::string	NormalizeStr(std::string str)
 
 	i = 0;
 	if (str.length() > 10)
-	{
-		while (i < 9)
-		{
-			ret += str[i];
-			i++;
-		}
-		ret += '.';
-		return ret;
-	}
+		return str.replace(9, str.length() - 9, "."), str;
 	ret = str;
 	while (ret.length() < 10)
 	{
@@ -107,7 +100,7 @@ void PhoneBook::search(int size)
             std::cout << std::endl;
             exit(0) ;
         }
-		if (ifdigit(line) && (index = std::atoi(line.c_str())) >= 0 && index < size)
+		if (!line.empty() && ifdigit(line) && (index = std::atoi(line.c_str())) >= 0 && index < size)
 		{
 				std::cout << "First name    : " << arr[index].get_first_name() << std::endl;
 				std::cout << "Last name     : " << arr[index].get_last_name() << std::endl;

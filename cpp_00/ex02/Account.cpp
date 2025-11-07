@@ -12,7 +12,9 @@ void Account::_displayTimestamp( void )
 	std::time_t now = std::time(NULL);
 	std::tm *fullDate = std::localtime(&now);
 	
-	std::cout << "[" << std::put_time(fullDate, "%Y%m%d_%H%M%S") << "] ";
+	char myTime[19];
+	std::strftime(myTime, sizeof(myTime), "[%Y%m%d_%H%M%S] ", fullDate);
+	std::cout << myTime;
 }
 
 int		Account::checkAmount( void ) const
