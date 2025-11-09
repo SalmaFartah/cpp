@@ -3,14 +3,16 @@
 
 #include "Contact.hpp"
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class PhoneBook
 {
-public:
+private:
     contact arr[8];
 public:
-    void add_contact(int i);
-    void search(int size);
+    bool add_contact(int i);
+    bool search(int size);
     PhoneBook(){};
     ~PhoneBook(){};
 };

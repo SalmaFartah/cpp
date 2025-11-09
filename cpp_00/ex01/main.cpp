@@ -16,7 +16,8 @@ int main()
             return std::cout << std::endl, 0;
         if (line == "ADD")
         {
-            mybook.add_contact(index);
+            if (!mybook.add_contact(index))
+                return 0;
             index++;
             if (contacts < 8)
                 contacts++;
@@ -24,7 +25,10 @@ int main()
         if (line == "EXIT")
             exit(0);
         if (line == "SEARCH")
-            mybook.search(contacts);
+        {
+            if (!mybook.search(contacts))
+                return 0;
+        }
         if (index == 8)
             index = 0;
     }
