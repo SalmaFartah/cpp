@@ -1,6 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include "why.hpp"
+
 
 void replace(std::string buffer, std::string s1, std::string s2)
 {
@@ -23,7 +22,7 @@ void replace(std::string buffer, std::string s1, std::string s2)
 int main(int ac, char *av[])
 {
     if (ac != 4)
-        return std::cerr << "bad args !" << std::endl, 1;
+        return std::cerr << "bad argument !" << std::endl, 1;
     std::ifstream myfile(av[1]);
     if (!myfile.is_open())
         return std::cerr << "file: " << av[1] << " not exist or not permitted !" << std::endl, 1;
