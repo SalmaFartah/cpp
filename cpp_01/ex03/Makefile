@@ -6,6 +6,7 @@ NAME = Humans
 
 SRC =	main.cpp\
 		HumanA.cpp\
+		HumanB.cpp\
 		Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
@@ -15,7 +16,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp HumanA.hpp Weapon.hpp
+%.o : %.cpp HumanA.hpp HumanB.hpp Weapon.hpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :
