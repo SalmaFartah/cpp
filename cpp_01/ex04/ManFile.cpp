@@ -26,7 +26,7 @@ bool ManFile::outfileError()
 	return outErr;
 }
 
-void ManFile::copyReplace(std::string fileBuff, std::string s1, std::string s2)
+void ManFile::copyReplace(std::string filename, std::string fileBuff, std::string s1, std::string s2)
 {
 	std::string replaced;
     size_t start = 0;
@@ -40,7 +40,7 @@ void ManFile::copyReplace(std::string fileBuff, std::string s1, std::string s2)
             replaced += s2;
         start = end + s1.length();
     }
-    std::ofstream out("outFile");
+    std::ofstream out(filename + ".replace");
 	if (!out.is_open())
 	{
 		outErr = true;

@@ -14,7 +14,7 @@ private:
 public:
     static std::string readfile(std::string fileName);
     static bool infileError();
-    static void copyReplace(std::string fileBuff, std::string s1, std::string s2);
+    static void copyReplace(std::string filename, std::string fileBuff, std::string s1, std::string s2);
     static bool outfileError();
     ManFile(){};
     ~ManFile(){};

@@ -9,7 +9,7 @@ int main(int ac, char *av[])
 	if (ManFile::infileError())
 		return std::cerr << av[1] << ": not exist, or his permission is denied !\n", 1;
 
-	ManFile::copyReplace(buffer, av[2], av[3]);
+	ManFile::copyReplace(av[1], buffer, av[2], av[3]);
 	if (ManFile::outfileError())
 		return std::cerr << "outFile: permission denied !\n", 1;	
 }
