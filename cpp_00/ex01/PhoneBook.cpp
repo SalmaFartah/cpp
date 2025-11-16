@@ -1,5 +1,8 @@
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook(){};//constructor
+PhoneBook::~PhoneBook(){};//destructor
+
 std::string getvline(std::string prompt)
 {
 	std::string line;

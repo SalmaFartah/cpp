@@ -13,7 +13,7 @@ private:
 public:
 	void attack();
 	HumanA(std::string newName, Weapon& newWeap);
-	~HumanA(){};
+	~HumanA();
 };
 
 #endif

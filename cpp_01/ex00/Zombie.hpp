@@ -1,3 +1,6 @@
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
 #include <string>
 #include <iostream>
 #include <new>
@@ -14,3 +17,5 @@ public:
 
 Zombie* newZombie( std::string name );
 void randomChump( std::string name );
+
+#endif

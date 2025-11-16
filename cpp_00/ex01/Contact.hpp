@@ -4,11 +4,20 @@
 #include <string>
 
 /*
-here contact class have 5 private attributes and setters 
+a class is a blueprint of an object, 
+when define a class it dosnt consume any memory
+the class is by default private, 
+we can change it by providing other access specifiers,
+like public for outside class access,
+or
+*/
+
+/*
+here Contact class have 5 private attributes and setters 
 getters methods to access this attributes outside the class
 */
 
-class contact
+class Contact
 {
 
 private:
@@ -30,8 +39,8 @@ public:
 	void set_nickname(std::string value);
 	void set_phone_number(std::string value);
 	void set_darkest_secret(std::string value);
-	contact(){};
-	~contact(){};
+	Contact();
+	~Contact();
 };
 
 #endif

@@ -4,6 +4,9 @@ HumanB::HumanB(std::string newName)
 {
 	name = newName;
 }
+HumanB::~HumanB(){}
+
+
 
 void HumanB::attack()
 {

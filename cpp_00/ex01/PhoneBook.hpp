@@ -9,12 +9,12 @@
 class PhoneBook
 {
 private:
-    contact arr[8];
+    Contact arr[8];
 public:
     bool add_contact(int i);
     bool search(int size);
-    PhoneBook(){};
-    ~PhoneBook(){};
+    PhoneBook();
+    ~PhoneBook();
 };
 
 #endif

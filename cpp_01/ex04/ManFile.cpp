@@ -3,6 +3,9 @@
 bool ManFile::inErr = false;
 bool ManFile::outErr = false;
 
+ManFile::ManFile(){}
+ManFile::~ManFile(){}
+
 std::string ManFile::readfile(std::string fileName)
 {
 	std::ifstream inf(fileName);
@@ -21,6 +24,7 @@ bool ManFile::infileError()
 {
 	return inErr;
 }
+
 bool ManFile::outfileError()
 {
 	return outErr;
