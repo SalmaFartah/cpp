@@ -23,7 +23,7 @@ int main()
                 contacts++;
         }
         if (line == "EXIT")
-            exit(0);
+            return 0;
         if (line == "SEARCH")
         {
             if (!mybook.search(contacts))

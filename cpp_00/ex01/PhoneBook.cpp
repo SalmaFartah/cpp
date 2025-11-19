@@ -25,7 +25,7 @@ bool PhoneBook::add_contact(int i)
 
 	line = getvline("First name: ");
 	if (std::cin.eof())
-		exit(0);
+		return false;
 	arr[i].set_first_name(line);
 
 	line = getvline("Last name: ");

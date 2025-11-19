@@ -5,16 +5,16 @@
 
 /*
 a class is a blueprint of an object, 
-when define a class it dosnt consume any memory
+The class definition itself does not allocate memory for data members
 the class is by default private, 
 we can change it by providing other access specifiers,
 like public for outside class access,
-or
 */
 
 /*
 here Contact class have 5 private attributes and setters 
 getters methods to access this attributes outside the class
+and of course default constructor and destructor
 */
 
 class Contact
