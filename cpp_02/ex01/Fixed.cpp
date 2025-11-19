@@ -3,22 +3,30 @@ const int Fixed::fractional = 8;
 
 Fixed::Fixed(const int a)
 {
-	fixed = a * std::pow(2, fractional);
+	std::cout << "Int constructor called" << std::endl;
+	fixed = a * pow(2, fractional);
 }
 
 Fixed::Fixed(const float a)
 {
-	fixed = a * std::pow(2, fractional);
+	std::cout << "Float constructor called" << std::endl;
+	fixed = roundf(a * pow(2, fractional));
 }
 
 float Fixed::toFloat( void ) const
 {
-	return fixed / std::pow(2, fractional);
+	return fixed / pow(2, fractional);
 }
 
 int Fixed::toInt( void ) const
 {
-	return fixed / std::pow(2, fractional);
+	return fixed / pow(2, fractional);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &myObject)
+{
+	out << myObject.toFloat();
+	return out;
 }
 
 Fixed::Fixed()
@@ -32,13 +40,13 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed &old)
+Fixed::Fixed(const Fixed &old)
 {
 	this->fixed = old.fixed;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(Fixed &old)
+Fixed& Fixed::operator=(const Fixed &old)
 {
 	this->fixed = old.fixed;
 	std::cout << "Copy assignment operator called" << std::endl;
