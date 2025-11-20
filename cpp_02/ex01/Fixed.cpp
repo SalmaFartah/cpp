@@ -1,6 +1,18 @@
 #include "Fixed.hpp"
 const int Fixed::fractional = 8;
 
+Fixed::Fixed()
+{
+	fixed = 0;
+	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const Fixed &old)
+{
+	this->fixed = old.fixed;
+	std::cout << "Copy constructor called" << std::endl;
+}
+
 Fixed::Fixed(const int a)
 {
 	std::cout << "Int constructor called" << std::endl;
@@ -29,23 +41,6 @@ std::ostream &operator<<(std::ostream &out, const Fixed &myObject)
 	return out;
 }
 
-Fixed::Fixed()
-{
-	fixed = 0;
-	std::cout << "Default constructor called" << std::endl;
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
-
-Fixed::Fixed(const Fixed &old)
-{
-	this->fixed = old.fixed;
-	std::cout << "Copy constructor called" << std::endl;
-}
-
 Fixed& Fixed::operator=(const Fixed &old)
 {
 	this->fixed = old.fixed;
@@ -63,4 +58,9 @@ void Fixed::setRawBits( int const raw )
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	fixed = raw;
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
 }
