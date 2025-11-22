@@ -4,24 +4,24 @@ const int Fixed::fractional = 8;
 Fixed::Fixed()
 {
 	fixed = 0;
-	// std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &old)
 {
 	this->fixed = old.fixed;
-	// std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int a)
 {
-	// std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	fixed = a * pow(2, fractional);
 }
 
 Fixed::Fixed(const float a)
 {
-	// std::cout << "Float constructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	fixed = roundf(a * pow(2, fractional));
 }
 
@@ -44,25 +44,25 @@ std::ostream &operator<<(std::ostream &out, const Fixed &myObject)
 Fixed& Fixed::operator=(const Fixed &old)
 {
 	this->fixed = old.fixed;
-	// std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
 int Fixed::getRawBits( void ) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return fixed;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	// std::cout << "setRawBits member function called" << std::endl;
+	std::cout << "setRawBits member function called" << std::endl;
 	fixed = raw;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 
@@ -157,28 +157,28 @@ Fixed Fixed::operator++(int c)
 	return result;
 }
 
-Fixed Fixed::max(Fixed &obj1, Fixed &obj2)
+Fixed& Fixed::max(Fixed &obj1, Fixed &obj2)
 {
 	if (obj1 > obj2)
 		return obj1;
 	return obj2;
 }
 
-Fixed Fixed::min(Fixed &obj1, Fixed &obj2)
+Fixed& Fixed::min(Fixed &obj1, Fixed &obj2)
 {
 	if (obj1 < obj2)
 		return obj1;
 	return obj2;
 }
 
-Fixed Fixed::max(const Fixed &obj1, const Fixed &obj2)
+const Fixed& Fixed::max(const Fixed &obj1, const Fixed &obj2)
 {
 	if (obj1 > obj2)
 		return obj1;
 	return obj2;
 }
 
-Fixed Fixed::min(const Fixed &obj1, const Fixed &obj2)
+const Fixed& Fixed::min(const Fixed &obj1, const Fixed &obj2)
 {
 	if (obj1 < obj2)
 		return obj1;
