@@ -11,9 +11,9 @@ private:
 public:
 	Point(const float& x, const float& y);
 	Point(Point& old);
-	const Fixed get_x() const ;
-	const Fixed get_y() const ;
-	// Point& operator=(const Point& old);
+	const Fixed& X() const ;
+	const Fixed& Y() const ;
+	Point& operator=(const Point& old);
 	Point();
 	~Point();
 };

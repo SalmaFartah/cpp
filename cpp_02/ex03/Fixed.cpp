@@ -148,9 +148,8 @@ Fixed &Fixed::operator++()
 	return *this;
 }
 
-Fixed Fixed::operator++(int c)
+Fixed Fixed::operator++(int)
 {
-	(void)c;
 	Fixed result;
 	result.fixed = this->fixed;
 	this->fixed++;
