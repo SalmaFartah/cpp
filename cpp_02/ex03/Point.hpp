@@ -10,7 +10,7 @@ private:
 	const Fixed y;
 public:
 	Point(const float& x, const float& y);
-	Point(Point& old);
+	Point(const Point& old);
 	const Fixed& X() const ;
 	const Fixed& Y() const ;
 	Point& operator=(const Point& old);
@@ -19,5 +19,6 @@ public:
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
+Fixed area( Point const a, Point const b, Point const c );
 
 #endif
