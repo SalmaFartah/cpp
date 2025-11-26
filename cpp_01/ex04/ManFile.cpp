@@ -8,7 +8,7 @@ ManFile::~ManFile(){}
 
 std::string ManFile::readfile(std::string fileName)
 {
-	std::ifstream inf(fileName);
+	std::ifstream inf(fileName.c_str());
 	std::stringstream buffer;
 	if (!inf.is_open())
 	{
@@ -30,21 +30,21 @@ bool ManFile::outfileError()
 	return outErr;
 }
 
-void ManFile::copyReplace(std::string filename, std::string fileBuff, std::string s1, std::string s2)
+void ManFile::copyReplace(std::string filename, std::string infileBuff, std::string s1, std::string s2)
 {
 	std::string replaced;
     size_t start = 0;
     size_t end = 0;
 
-    while (end != std::string::npos && start != fileBuff.length())
+    while (end != std::string::npos && start != infileBuff.length())
     {
-        end = fileBuff.find(s1, start);
-        replaced += fileBuff.substr(start, end - start);
+		end = infileBuff.find(s1, start);
+        replaced += infileBuff.substr(start, end - start);
         if (end != std::string::npos)
             replaced += s2;
         start = end + s1.length();
     }
-    std::ofstream out(filename + ".replace");
+    std::ofstream out((filename + ".replace").c_str());
 	if (!out.is_open())
 	{
 		outErr = true;

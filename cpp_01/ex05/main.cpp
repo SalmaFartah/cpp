@@ -6,6 +6,5 @@ int main()
     // obj.complain("DEBUG");
     // obj.complain("ERROR");
     // obj.complain("INFO");
-    // obj.complain("WARNING");
-    obj.complain("test");
+    obj.complain("WARNING");
 }

@@ -2,9 +2,12 @@
 
 int main()
 {
-    randomChump("MyZombie");
+    randomChump("StackZombie");
 
-    Zombie *Zz = newZombie("2ndZombie");
-    Zz->announce();
-    delete(Zz);
+    Zombie *Zz = newZombie("HeapZombie");
+    if (Zz)
+    {
+        Zz->announce();
+        delete(Zz);
+    }
 }

@@ -47,16 +47,19 @@ void   Harl::complain( std::string level )
 			(this->*caller[i])();
 			std::cout << '\n';
 			i++;
+			/* falls through */
 		case 1:
 			std::cout << "[ " << table[i] << " ]\n";
 			(this->*caller[i])();
 			std::cout << '\n';
 			i++;
+			/* falls through */
 		case 2:
 			std::cout << "[ " << table[i] << " ]\n";
 			(this->*caller[i])();
 			std::cout << '\n';
-			i++;	
+			i++;
+			/* falls through */
 		case 3:
 			std::cout << "[ " << table[i] << " ]\n";
 			(this->*caller[i])();

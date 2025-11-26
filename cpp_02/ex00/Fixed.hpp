@@ -13,10 +13,9 @@ public:
 	void setRawBits( int const raw );
 	//---ORTHODOX CANONICAL FORM---//
 	Fixed();
-	Fixed(Fixed &old);
-	Fixed &operator=(Fixed &old);
+	Fixed(const Fixed &old);
+	Fixed &operator=(const Fixed &old);
 	~Fixed();
 };
-
 
 #endif

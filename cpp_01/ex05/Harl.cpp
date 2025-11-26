@@ -44,5 +44,4 @@ void   Harl::complain( std::string level )
 			(this->*caller[i])();
 		i++;
 	}
-	
 }
