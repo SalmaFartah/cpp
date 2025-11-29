@@ -3,7 +3,7 @@
 Zombie* zombieHorde( int N, std::string name )
 {
 	Zombie	*Zz = new (std::nothrow) Zombie[N];
-	if (!Zz)
+	if (Zz == NULL)
 		return (NULL);
 	for (int i = 0; i < N; i++)
 		Zz[i]._set_(name);

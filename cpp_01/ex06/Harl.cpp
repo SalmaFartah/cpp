@@ -43,29 +43,29 @@ void   Harl::complain( std::string level )
 	switch (i)
 	{
 		case 0:
-			std::cout << "[ " << table[i] << " ]\n";
+			std::cout << "[ " << table[i] << " ]" << std::endl;
 			(this->*caller[i])();
-			std::cout << '\n';
+			std::cout << std::endl;
 			i++;
 			/* falls through */
 		case 1:
-			std::cout << "[ " << table[i] << " ]\n";
+			std::cout << "[ " << table[i] << " ]" << std::endl;
 			(this->*caller[i])();
-			std::cout << '\n';
+			std::cout << std::endl;
 			i++;
 			/* falls through */
 		case 2:
-			std::cout << "[ " << table[i] << " ]\n";
+			std::cout << "[ " << table[i] << " ]" << std::endl;
 			(this->*caller[i])();
-			std::cout << '\n';
+			std::cout << std::endl;
 			i++;
 			/* falls through */
 		case 3:
-			std::cout << "[ " << table[i] << " ]\n";
+			std::cout << "[ " << table[i] << " ]" << std::endl;
 			(this->*caller[i])();
-			std::cout << '\n';
+			std::cout << std::endl;
 			break;
 		default:
-			std::cout << "[ Probably complaining about insignificant problems ]\n";
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }
