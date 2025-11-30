@@ -11,17 +11,17 @@ int main()
 
     {
         std::cout << ORANGE << "Creating ClapTrap 'Bob':\n" << RESET;
-        ClapTrap bob("Bob");
+        ClapTrap bob("Bob");// HP = 10, EP = 10, AD = 0
 
         std::cout << ORANGE  << "\nSimple actions:\n" << RESET;
-        bob.attack("a wooden crate");
-        bob.takeDamage(5);
-        bob.beRepaired(3);
+        bob.attack("AMY");// lose one energy point so HP = 10, EP = 9, AD = 0
+        bob.takeDamage(5);// lose 5 hit points so HP = 5, EP = 9, AD = 0
+        bob.beRepaired(3);// lose 1 energy points and gain 3 hit points so HP = 8, EP = 8, AD = 0
 
         std::cout << ORANGE << "\nDeplete energy by attacking until energy runs out:\n" << RESET;
-        for (int i = 0; i < 9; ++i)
+        for (int i = 1; i <= 9; i++)
         {
-            std::cout << "Attempt " << (i + 1) << ": ";
+            std::cout << i << ": ";
             bob.attack("dummy target");
         }
 
@@ -29,16 +29,6 @@ int main()
         bob.takeDamage(100);
         bob.attack("someone");
         bob.beRepaired(5);
-
-        std::cout << ORANGE << "\nCreate another ClapTrap 'Alice' to test repairs costing energy:\n" << RESET;
-        ClapTrap alice("Alice");
-        alice.takeDamage(8);
-        std::cout << ORANGE << "Alice repairs repeatedly (each repair costs 1 energy):\n" << RESET;
-        for (int i = 0; i < 11; ++i)
-        {
-            std::cout << "Repair attempt " << (i + 1) << ": ";
-            alice.beRepaired(2);
-        }
 
         std::cout << ORANGE << "\nLeaving scope — Bob and Alice will be destroyed (observe destructor messages):\n" << RESET;
     }

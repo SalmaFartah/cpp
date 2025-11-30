@@ -15,14 +15,13 @@ public:
 
 	ClapTrap(); // -------------------------------------default constructor
 	ClapTrap(const ClapTrap& old); // ------------------copy  constructor
-	ClapTrap& operator=(const ClapTrap& old); // -------copy assignment
+	ClapTrap& operator=(const ClapTrap& old); // -copy assignment
 	ClapTrap(std::string newName); // ------------------parametrized constructor
-	~ClapTrap(); // ------------------------------------destructor
+	virtual ~ClapTrap(); // ----------------------------destructor
 
 	virtual void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
-
 };
 
 #endif

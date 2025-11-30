@@ -6,7 +6,8 @@ int main()
     std::string ORANGE = "\033[38;5;208m";
     std::string RESET  = "\033[0m";
 
-    DiamondTrap a("D1");
+    std::cout << GREEN << "the DiamondTrap KAN will be created watch construction chaining: " << RESET << std::endl;
+    DiamondTrap a("KAN");
     std::cout << ORANGE << "\n-- after construction --\n" << RESET;
     a.whoAmI();
 

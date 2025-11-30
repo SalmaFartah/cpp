@@ -12,13 +12,13 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed &old)
+Fixed::Fixed(const Fixed &old)
 {
 	this->fixed = old.fixed;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(Fixed &old)
+Fixed& Fixed::operator=(const Fixed &old)
 {
 	this->fixed = old.fixed;
 	std::cout << "Copy assignment operator called" << std::endl;
