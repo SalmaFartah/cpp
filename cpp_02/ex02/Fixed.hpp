@@ -25,11 +25,11 @@ public:
 	Fixed operator/( const Fixed &obj2 ) const;
 
 	//-----DECREMENT-OPERATORS-----//
-	Fixed operator--(int c);
+	Fixed operator--(int);
 	Fixed &operator--();
 
 	//-----INCREMENT-OPERATORS-----//
-	Fixed operator++(int c);
+	Fixed operator++(int);
 	Fixed &operator++();
 
 	//-----MAX-MIN-FUNCTIONS-----//

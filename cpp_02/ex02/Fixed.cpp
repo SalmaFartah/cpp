@@ -68,32 +68,32 @@ Fixed::~Fixed()
 
 bool Fixed::operator<( const Fixed &obj2 ) const
 {
-	return this->toFloat() < obj2.toFloat();
+	return this->fixed < obj2.fixed;
 }
 
 bool Fixed::operator>( const Fixed &obj2 ) const
 {
-	return this->toFloat() > obj2.toFloat();
+	return this->fixed > obj2.fixed;
 }
 
 bool Fixed::operator<=( const Fixed &obj2 ) const
 {
-	return this->toFloat() <= obj2.toFloat();
+	return this->fixed <= obj2.fixed;
 }
 
 bool Fixed::operator>=( const Fixed &obj2 ) const
 {
-	return this->toFloat() >= obj2.toFloat();
+	return this->fixed >= obj2.fixed;
 }
 
 bool Fixed::operator==( const Fixed &obj2 ) const
 {
-	return this->toFloat() == obj2.toFloat();
+	return this->fixed == obj2.fixed;
 }
 
 bool Fixed::operator!=( const Fixed &obj2 ) const
 {
-	return this->toFloat() != obj2.toFloat();
+	return this->fixed != obj2.fixed;
 }
 
 
@@ -126,16 +126,14 @@ Fixed Fixed::operator/( const Fixed &obj2 ) const
 	return result;
 }
 
-
 Fixed &Fixed::operator--()
 {
 	this->fixed--;
 	return *this;
 }
 
-Fixed Fixed::operator--(int c)
+Fixed Fixed::operator--(int)
 {
-	(void)c;
 	Fixed result;
 	result.fixed = this->fixed;
 	this->fixed--;
@@ -148,9 +146,8 @@ Fixed &Fixed::operator++()
 	return *this;
 }
 
-Fixed Fixed::operator++(int c)
+Fixed Fixed::operator++(int)
 {
-	(void)c;
 	Fixed result;
 	result.fixed = this->fixed;
 	this->fixed++;
