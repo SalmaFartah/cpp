@@ -1,6 +1,5 @@
 #include "Character.hpp"
 
-
 Character::Character()
 {
 	for (int i = 0; i < 4; i++)
@@ -12,11 +11,11 @@ Character::Character( Character& old )
 	name = old.name;
 	for (int i = 0; i < 4; i++)
 	{
-		if (slots[i]->getType() == "cure")
-		{
-			slots[i] = new Cure();
-			*slots[i] = *old.slots[i];
-		}
+		if (!old.slots[i])
+			slots[i] = NULL;
+		else
+			slots[i] = old.slots[i]->clone();
+	
 	}
 }
 
@@ -32,10 +31,12 @@ Character& Character::operator=( Character& old )
 	name = old.name;
 	for (int i = 0; i < 4; i++)
 	{
-		if (slots[i] && slots[i]->getType() == "cure")
+		if (!old.slots[i])
+			slots[i] = NULL;
+		else
 		{
-			slots[i] = new Cure();
-			*slots[i] = *old.slots[i];
+			delete slots[i];
+			slots[i] = old.slots[i]->clone();
 		}
 	}
 	return *this;
@@ -51,8 +52,8 @@ void Character::equip(AMateria* m)
 	for (int i = 0; i < 4; i++)
 	{
 		if (!slots[i] && m)
-		{			
-			slots[i] = m;
+		{
+			slots[i] = m->clone();
 			break ;
 		}
 	}
@@ -69,4 +70,8 @@ void Character::use(int idx, ICharacter& target)
 		slots[idx]->use(target);
 }
 
-Character::~Character(){}
+Character::~Character()
+{
+	for (int i = 0; i < 4; i++)
+		delete slots[i];
+}

@@ -9,8 +9,8 @@ class Character : public ICharacter
 {
 private:
 	std::string name;
-public:
 	AMateria *slots[4];
+public:
 	Character();
 	Character( Character& old );
 	Character( std::string Name);
