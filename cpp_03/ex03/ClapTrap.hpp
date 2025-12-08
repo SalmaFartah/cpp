@@ -15,7 +15,7 @@ public:
 
 	ClapTrap(); // -------------------------------------default constructor
 	ClapTrap(const ClapTrap& old); // ------------------copy  constructor
-	ClapTrap& operator=(const ClapTrap& old); // -copy assignment
+	ClapTrap& operator=(const ClapTrap& old); // -------copy assignment
 	ClapTrap(std::string newName); // ------------------parametrized constructor
 	virtual ~ClapTrap(); // ----------------------------destructor
 

@@ -7,7 +7,7 @@ DiamondTrap::DiamondTrap()
 	attack_damage = 30;
 	std::cout << "DiamondTrap " << name << " is born (parametrized constructor) !" << std::endl;
 }
-DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName +  "_clap_name"), ScavTrap(newName +  "_clap_name"), FragTrap(newName +  "_clap_name")
+DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName +  "_clap_name"), FragTrap(newName), ScavTrap(newName)
 {
 	name = newName;
 	hit_points = 100;
@@ -16,14 +16,16 @@ DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName +  "_clap_name"
 	std::cout << "DiamondTrap " << name << " is born (parametrized constructor) !" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const FragTrap& old): ClapTrap(old)
+DiamondTrap::DiamondTrap(const DiamondTrap& old): ClapTrap(old)
 {
+	name = old.name;
     std::cout << "DiamondTrap " << name << " copied (copy constructor)" << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(const FragTrap& old)
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap& old)
 {
     ClapTrap::operator=(old);
+	name = old.name;
     std::cout << "DiamondTrap " << name << " assigned (copy assignment)" << std::endl;
     return *this;
 }
@@ -32,7 +34,6 @@ DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap " << name << " is now gone.." << std::endl;
 }
-
 
 void DiamondTrap::whoAmI()
 {

@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = exec
 
-SRC =	main.cpp ClapTrap.cpp FragTrap.cpp
+SRC =	main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp ClapTrap.hpp FragTrap.hpp
+%.o : %.cpp ClapTrap.hpp FragTrap.hpp ScavTrap.hpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :

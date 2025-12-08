@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(std::string newName)
     std::cout << "ClapTrap " << name << " is born (parametrized constructor) !" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& old)
+ClapTrap::ClapTrap(const ClapTrap &old)
 {
     this->name = old.name;
     this->hit_points = old.hit_points;
@@ -71,7 +71,9 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (hit_points >= amount)
+    if (!hit_points)
+        std::cout << "ClapTrap " << name << " is already dead!" << std::endl;
+    else if (hit_points >= amount)
     {
         hit_points -= amount;
         std::cout << "ClapTrap " << name << " takes " << amount << " points of damage!" << std::endl;
