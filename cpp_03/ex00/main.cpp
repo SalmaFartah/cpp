@@ -6,7 +6,6 @@ int main()
     std::string ORANGE = "\033[38;5;208m";
     std::string RESET  = "\033[0m";
 
-
     std::cout << GREEN << "=== ClapTrap demo start ===\n\n" << RESET;
 
     {

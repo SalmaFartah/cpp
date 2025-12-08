@@ -10,14 +10,14 @@ int main()
     std::cout << GREEN << "=== ScavTrap demo start ===\n\n";
 
     {
-        std::cout << ORANGE << "Creating ScavTrap 'Gatekeeper' (observe construction chaining):\n" << RESET;
-        ScavTrap scav("Gatekeeper");
+        std::cout << ORANGE << "Creating ScavTrap 'SCAV' (observe construction chaining):\n" << RESET;
+        ScavTrap scav("SCAV");
 
-        std::cout << ORANGE << "\nExercise ScavTrap actions:\n" << RESET;
-        scav.guardGate();                    // ScavTrap-specific ability
-        scav.attack("an intruder");          // overridden by ScavTrap
-        scav.takeDamage(30);                 // inherited from ClapTrap
-        scav.beRepaired(15);                 // inherited from ClapTrap
+        std::cout << ORANGE << "\nTest ScavTrap actions:\n" << RESET;
+        scav.guardGate();
+        scav.attack("SCAV_2");
+        scav.takeDamage(30);
+        scav.beRepaired(15);
 
         std::cout << ORANGE << "\nLeaving scope (ScavTrap will be destroyed, observe destructor chaining):\n" << RESET;
     }

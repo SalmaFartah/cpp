@@ -6,7 +6,7 @@ ClapTrap::ClapTrap()
     hit_points = 10;
     energy_points = 10;
     attack_damage = 0;
-    std::cout << "Anonymous is born (default constructor) !" << std::endl;
+    std::cout << "ClapTrap " << "Anonymous is born (default constructor) !" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string newName)
@@ -49,11 +49,10 @@ void ClapTrap::attack(const std::string& target)
         energy_points--;
         std::cout << "ClapTrap " << name << " attacks " << target << " , causing " << attack_damage << " points of damage!" << std::endl;
     }
-    else if (!energy_points)
-        std::cout << "ClapTrap " << name << " cannot attack, no energy left!" << std::endl;
-    else
+    else if (!hit_points)
         std::cout << "ClapTrap " << name << " cannot attack, already dead!" << std::endl;
-            
+    else
+        std::cout << "ClapTrap " << name << " cannot attack, no energy left!" << std::endl;    
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -64,15 +63,15 @@ void ClapTrap::beRepaired(unsigned int amount)
         hit_points += amount;
         std::cout << "ClapTrap " << name << " repairs itself, gaining " << amount << " hit points!" << std::endl;
     }
-    else if (!energy_points)
-        std::cout << "ClapTrap " << name << " cannot repair, no energy left!" << std::endl;
-    else
+    else if (!hit_points)
         std::cout<< "ClapTrap " << name << " cannot repair, already dead!" << std::endl;
+    else
+        std::cout << "ClapTrap " << name << " cannot repair, no energy left!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (hit_points > amount)
+    if (hit_points >= amount)
     {
         hit_points -= amount;
         std::cout << "ClapTrap " << name << " takes " << amount << " points of damage!" << std::endl;

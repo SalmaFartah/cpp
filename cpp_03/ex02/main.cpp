@@ -13,15 +13,15 @@ int main()
 
         FragTrap frag("Fraggy");
 
-        std::cout << ORANGE << "\nExercise FragTrap actions:" << RESET << std::endl;
+        std::cout << ORANGE << "\nTest FragTrap actions:" << RESET << std::endl;
 
-        frag.highFivesGuys();                // FragTrap-specific ability
+        frag.highFivesGuys();
 
-        frag.attack("a wild enemy");         // inherited from ClapTrap
+        frag.attack("a wild enemy");
 
-        frag.takeDamage(25);                 // inherited from ClapTrap
+        frag.takeDamage(25);
 
-        frag.beRepaired(10);                 // inherited from ClapTrap
+        frag.beRepaired(10);
 
         std::cout << ORANGE << "\nLeaving scope (FragTrap will be destroyed, observe destructor chaining): " << RESET << "\n";
     }
