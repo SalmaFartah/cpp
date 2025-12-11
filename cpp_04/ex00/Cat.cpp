@@ -6,12 +6,12 @@ Cat::Cat()
 	std::cout << "Cat constructor called! 🐱 Meow. I approve this message." << std::endl;
 }
 
-Cat::Cat( Cat& old ) : Animal( old )
+Cat::Cat( const Cat& old ) : Animal( old )
 {
 	std::cout << "Cat copy constructor! 😼 A shadow clone appears... silently." << std::endl;
 }
 
-Cat& Cat::operator=( Cat& old )
+Cat& Cat::operator=( const Cat& old )
 {
 	Animal::operator=(old);
 	return *this;

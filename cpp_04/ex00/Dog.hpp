@@ -7,11 +7,11 @@
 class Dog : public Animal
 {
 public:
-	Dog();
-	Dog( Dog &old );
-	Dog& operator=( Dog& old );
-	void makeSound() const;
-	~Dog();
+	Dog(); // CTOR
+	Dog( const Dog &old ); // COPY CTRO
+	Dog& operator=( const Dog& old ); // COPY ASSIGN
+	void makeSound() const; // overriden
+	~Dog(); // DTOR
 };
 
 #endif

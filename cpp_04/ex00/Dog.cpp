@@ -6,12 +6,12 @@ Dog::Dog()
 	std::cout << "Dog constructor called! 🐶 Woof! I need snacks!" << std::endl;
 }
 
-Dog::Dog( Dog& old ) : Animal( old )
+Dog::Dog( const Dog& old ) : Animal( old )
 {
 	std::cout << "Dog copy constructor! 🐕 A puppy is born !" << std::endl;
 }
 
-Dog& Dog::operator=( Dog& old )
+Dog& Dog::operator=( const Dog& old )
 {
 	Animal::operator=(old);
 	return *this;

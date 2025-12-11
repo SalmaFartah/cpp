@@ -9,12 +9,12 @@ class Animal
 protected:
 	std::string type;
 public:
-	Animal();
-	Animal( Animal &old );
-	Animal& operator=( Animal& old );
+	Animal(); // CTOR
+	Animal( const Animal &old ); // COPY CTOR
+	Animal& operator=( const Animal& old ); // COPY ASSIGN
 	virtual void makeSound() const;
 	std::string getType() const;
-	virtual ~Animal();
+	virtual ~Animal(); // DTOR
 };
 
 #endif

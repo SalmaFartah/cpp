@@ -9,7 +9,7 @@ int main()
     std::cout << GREEN << "=== FragTrap demo start ===\n\n";
 
     {
-        std::cout << ORANGE << "Creating FragTrap 'Fraggy' (observe construction messages):" << RESET << std::endl;
+        std::cout << ORANGE << "Creating FragTrap 'Fraggy' (observe construction message):" << RESET << std::endl;
 
         FragTrap frag("Fraggy");
 
@@ -17,7 +17,7 @@ int main()
 
         frag.highFivesGuys();
 
-        frag.attack("a wild enemy");
+        frag.attack("dummy target");
 
         frag.takeDamage(25);
 

@@ -13,11 +13,11 @@ protected:
 	unsigned int	attack_damage;
 public:
 
-	ClapTrap(); // -------------------------------------default constructor
-	ClapTrap(const ClapTrap& old); // ------------------copy  constructor
-	ClapTrap& operator=(const ClapTrap& old); // -------copy assignment
-	ClapTrap(std::string newName); // ------------------parametrized constructor
-	virtual ~ClapTrap(); // ----------------------------destructor
+	ClapTrap(); // ---------------------------------default constructor
+	ClapTrap(const ClapTrap& old); // --------------copy  constructor
+	ClapTrap& operator=(const ClapTrap& old); // ---copy assignment
+	ClapTrap(std::string newName); // --------------parametrized constructor
+	virtual ~ClapTrap(); // ------------------------destructor
 
 	virtual void attack(const std::string& target);
 	void takeDamage(unsigned int amount);

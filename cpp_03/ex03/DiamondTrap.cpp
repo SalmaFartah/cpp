@@ -5,9 +5,9 @@ DiamondTrap::DiamondTrap()
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 30;
-	std::cout << "DiamondTrap " << name << " is born (parametrized constructor) !" << std::endl;
+	std::cout << "DiamondTrap " << name << " is born (default constructor) !" << std::endl;
 }
-DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName +  "_clap_name"), FragTrap(newName), ScavTrap(newName)
+DiamondTrap::DiamondTrap(std::string newName) : ClapTrap(newName +  "_clap_name"), FragTrap(newName +  "_clap_name"), ScavTrap(newName +  "_clap_name")
 {
 	name = newName;
 	hit_points = 100;
@@ -37,5 +37,5 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::whoAmI()
 {
-    std::cout << "i'm the DiamondTrap: " << name << " my ClapTrap name is: " << ClapTrap::name << std::endl;
+    std::cout << "I'm the DiamondTrap: \'" << name << "\', My ClapTrap name is: \'" << ClapTrap::name << "\'" << std::endl;
 }

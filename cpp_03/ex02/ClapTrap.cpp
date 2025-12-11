@@ -18,7 +18,7 @@ ClapTrap::ClapTrap(std::string newName)
     std::cout << "ClapTrap " << name << " is born (parametrized constructor) !" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &old)
+ClapTrap::ClapTrap(const ClapTrap& old)
 {
     this->name = old.name;
     this->hit_points = old.hit_points;
@@ -47,7 +47,7 @@ void ClapTrap::attack(const std::string& target)
     if (energy_points && hit_points)
     {
         energy_points--;
-        std::cout << "ClapTrap " << name << " attacks " << target << " , causing " << attack_damage << " points of damage!" << std::endl;
+        std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
     }
     else if (!hit_points)
         std::cout << "ClapTrap " << name << " cannot attack, already dead!" << std::endl;
