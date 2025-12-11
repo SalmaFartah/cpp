@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = exec
 
-SRC =	main.cpp Cure.cpp Ice.cpp AMateria.cpp Character.cpp
+SRC =	main.cpp Cure.cpp Ice.cpp AMateria.cpp Character.cpp MateriaSource.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp Cure.hpp Ice.hpp AMateria.hpp Character.hpp ICharacter.hpp
+%.o : %.cpp Cure.hpp Ice.hpp AMateria.hpp Character.hpp ICharacter.hpp MateriaSource.hpp IMateriaSource.hpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :

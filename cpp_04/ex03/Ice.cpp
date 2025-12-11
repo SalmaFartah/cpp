@@ -6,12 +6,12 @@ Ice::Ice()
     type = "ice";
 }
 
-Ice::Ice( Ice& old )
+Ice::Ice( const Ice& old )
 {
     type = old.type;
 }
 
-Ice& Ice::operator=( Ice& old )
+Ice& Ice::operator=( const Ice& old )
 {
     type = old.type;
     return *this;
