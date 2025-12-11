@@ -10,10 +10,8 @@ private:
 	std::string ideas[100];
 public:
 	Brain();
-	Brain(Brain& old);
-	Brain& operator=(Brain& old);
-	void setIdeas(std::string str);
-	void showIdeas();
+	Brain( const Brain& old);
+	Brain& operator=( const Brain& old);
 	~Brain();
 };
 

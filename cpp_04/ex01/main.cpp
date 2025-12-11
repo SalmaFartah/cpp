@@ -36,5 +36,6 @@ int main()
 	   }
 	}
 	std::cout << GREEN << "\n🕊️ ALL ANIMALS DELETED..\n" << RESET;
+	// system("leaks -q exec");
 	return 0;
 }

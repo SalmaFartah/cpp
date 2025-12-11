@@ -12,8 +12,6 @@ public:
 	Brain();
 	Brain(Brain& old);
 	Brain& operator=(Brain& old);
-	void setIdeas(std::string str);
-	void showIdeas();
 	~Brain();
 };
 

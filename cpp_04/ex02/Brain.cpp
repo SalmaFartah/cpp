@@ -21,18 +21,6 @@ Brain& Brain::operator=(Brain& old)
 	return *this;
 }
 
-void Brain::setIdeas(std::string str)
-{
-	for (size_t i = 0; i < 100; i++)
-		ideas[i] = str;
-}
-
-void Brain::showIdeas()
-{
-	for (size_t i = 0; i < 100; i++)
-		std::cout << ideas[i] << std::endl;
-}
-
 Brain::~Brain()
 {
 	std::cout << "Brain destroyed! 💀✨ The ideas fade away..." << std::endl;

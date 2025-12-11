@@ -6,13 +6,13 @@ Animal::Animal()
 	std::cout << "Animal constructor called! 🐾 Rawr?" << std::endl;
 }
 
-Animal::Animal( Animal& old )
+Animal::Animal( const Animal& old )
 {
 	type = old.type;
 	std::cout << "Animal copy constructor! 🧬 Cloning life..." << std::endl;
 }
 
-Animal& Animal::operator=( Animal& old )
+Animal& Animal::operator=( const Animal& old )
 {
 	type = old.type;
 	return *this;

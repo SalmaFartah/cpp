@@ -10,8 +10,8 @@ protected:
 	std::string type;
 public:
 	WrongAnimal();
-	WrongAnimal( WrongAnimal &old );
-	WrongAnimal& operator=( WrongAnimal& old );
+	WrongAnimal( const WrongAnimal &old );
+	WrongAnimal& operator=( const WrongAnimal& old );
 	void makeSound() const;
 	std::string getType() const;
 	~WrongAnimal();

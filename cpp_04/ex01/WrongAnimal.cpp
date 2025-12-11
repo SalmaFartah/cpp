@@ -6,13 +6,13 @@ WrongAnimal::WrongAnimal()
 	std::cout << "WrongAnimal created! 🚨 Something feels off..." << std::endl;
 }
 
-WrongAnimal::WrongAnimal( WrongAnimal& old )
+WrongAnimal::WrongAnimal( const WrongAnimal& old )
 {
 	type = old.type;
 	std::cout << "WrongAnimal copy! 🧬 Cloning chaos..." << std::endl;
 }
 
-WrongAnimal& WrongAnimal::operator=( WrongAnimal& old )
+WrongAnimal& WrongAnimal::operator=( const WrongAnimal& old )
 {
 	type = old.type;
 	return *this;

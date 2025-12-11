@@ -6,7 +6,7 @@ Character::Character()
 		slots[i] = NULL;
 }
 
-Character::Character( Character& old )
+Character::Character( const Character& old )
 {
 	name = old.name;
 	for (int i = 0; i < 4; i++)
@@ -26,18 +26,18 @@ Character::Character( std::string Name )
 	name = Name;
 }
 
-Character& Character::operator=( Character& old )
+Character& Character::operator=( const Character& old )
 {
+	if (this == &old)
+		return *this;
 	name = old.name;
 	for (int i = 0; i < 4; i++)
 	{
+		delete slots[i];
 		if (!old.slots[i])
 			slots[i] = NULL;
 		else
-		{
-			delete slots[i];
 			slots[i] = old.slots[i]->clone();
-		}
 	}
 	return *this;
 }

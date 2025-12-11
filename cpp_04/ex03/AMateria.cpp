@@ -1,5 +1,5 @@
 #include "AMateria.hpp"
-
+#include "Character.hpp"
 AMateria::AMateria(){}
 
 AMateria::AMateria(std::string const & type)
@@ -20,7 +20,10 @@ AMateria& AMateria::operator=(AMateria& old)
 
 void AMateria::use(ICharacter& target)
 {
-	(void)target;
+	if (target.getName() == "ice")
+		std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
+	if (target.getName() == "cure")
+		std::cout << "* heals " << target.getName() << "’s wounds *\n";		
 }
 
 std::string const & AMateria::getType() const

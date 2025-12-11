@@ -12,9 +12,9 @@ private:
 	AMateria *slots[4];
 public:
 	Character();
-	Character( Character& old );
+	Character( const Character& old );
 	Character( std::string Name);
-	Character& operator=( Character& old );
+	Character& operator=( const Character& old );
 
 	std::string const & getName() const;
 	void equip(AMateria* m);

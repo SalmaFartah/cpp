@@ -7,13 +7,13 @@ Dog::Dog()
 	DogBrain = new Brain();
 }
 
-Dog::Dog( Dog& old ) : Animal( old )
+Dog::Dog(  const Dog& old ) : Animal( old )
 {
 	std::cout << "Dog copy constructor! 🐕 A puppy is born !" << std::endl;
 	DogBrain = new Brain(*old.DogBrain);
 }
 
-Dog& Dog::operator=( Dog& old )
+Dog& Dog::operator=(  const Dog& old )
 {
 	if (this != &old)
 	{

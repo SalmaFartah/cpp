@@ -12,7 +12,7 @@ Animal::Animal( const Animal& old ) // COPY CTOR
 	std::cout << "Animal copy constructor! 🧬 Cloning life..." << std::endl;
 }
 
-Animal& Animal::operator=( const Animal& old ) // COPY ASSIGNMENT : A = B
+Animal& Animal::operator=( const Animal& old ) // COPY ASSIGNMENT
 {
 	type = old.type;
 	return *this;

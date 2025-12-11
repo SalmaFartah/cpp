@@ -3,7 +3,7 @@
 
 Cure::Cure()
 {
-    type = "Cure";
+    type = "ure";
 }
 
 Cure::Cure( Cure& old )

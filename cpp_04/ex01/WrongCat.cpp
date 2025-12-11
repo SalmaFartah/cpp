@@ -6,12 +6,12 @@ WrongCat::WrongCat()
 	std::cout << "WrongCat born! 😼 I still hate Mondays." << std::endl;
 }
 
-WrongCat::WrongCat( WrongCat& old ) : WrongAnimal( old )
+WrongCat::WrongCat( const WrongCat& old ) : WrongAnimal( old )
 {
 	std::cout << "WrongCat copy! 😼 A shadow twin appears... silently." << std::endl;
 }
 
-WrongCat& WrongCat::operator=( WrongCat& old )
+WrongCat& WrongCat::operator=( const WrongCat& old )
 {
 	WrongAnimal::operator=(old);
 	return *this;

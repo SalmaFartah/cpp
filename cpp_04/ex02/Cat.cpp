@@ -7,13 +7,13 @@ Cat::Cat()
 	CatBrain = new Brain();
 }
 
-Cat::Cat( Cat& old ) : Animal( old )
+Cat::Cat( const Cat& old ) : Animal( old )
 {
 	std::cout << "Cat copy constructor! 😼 A shadow clone appears... silently." << std::endl;
 	CatBrain = new Brain(*old.CatBrain);
 }
 
-Cat& Cat::operator=( Cat& old )
+Cat& Cat::operator=( const Cat& old )
 {
 	if (this != &old)
 	{
