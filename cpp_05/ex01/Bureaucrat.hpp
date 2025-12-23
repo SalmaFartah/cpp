@@ -31,4 +31,4 @@ public:
 	~Bureaucrat();
 };
 
-std::ostream& operator<<(std::ostream& out, Bureaucrat& obj);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj);

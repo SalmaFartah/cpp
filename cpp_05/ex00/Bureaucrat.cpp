@@ -61,7 +61,7 @@ void Bureaucrat::grade_decrement()
 	grade++;
 }
 
-std::ostream& operator<<(std::ostream& out, Bureaucrat& obj)
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
 {
 	out << obj.getName() << ", bureaucrat grade " << obj.getGrade() << std::endl;
 	return out;

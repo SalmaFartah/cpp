@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 
+
+
 Bureaucrat::Bureaucrat() : name( "default" )
 {
 	grade = 1;
@@ -37,12 +39,12 @@ int Bureaucrat::getGrade() const
 
 const char *Bureaucrat::GradeTooHighException::what()  const throw()
 {
-	return "Grade To High";
+	return "Grade To High !";
 }
 
 const char *Bureaucrat::GradeTooLowException::what()  const throw()
 {
-	return "Grade To Low";
+	return "Grade To Low !";
 }
 
 void Bureaucrat::grade_increment()
@@ -56,10 +58,10 @@ void Bureaucrat::grade_decrement()
 {
 	if (grade + 1 > 150)
 		throw GradeTooLowException();
-	grade++;	
+	grade++;
 }
 
-std::ostream& operator<<(std::ostream& out, Bureaucrat& obj)
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
 {
 	out << obj.getName() << ", bureaucrat grade " << obj.getGrade() << std::endl;
 	return out;
