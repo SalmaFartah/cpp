@@ -20,7 +20,7 @@ public:
 	int getGradeSign() const;
 	int getGradeExecute() const;
 	const std::string getName() const;
-	bool getStatus() const;
+	bool is_signed() const;
 
 	void beSigned(Bureaucrat & obj);
 
@@ -32,7 +32,10 @@ public:
 	{
 		const char *what() const throw();
 	};
-
+	class FormAlreadySignedException : public std::exception
+	{
+		const char *what() const throw();
+	};
 	~Form();
 };
 

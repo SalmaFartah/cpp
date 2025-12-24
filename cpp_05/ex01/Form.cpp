@@ -3,75 +3,82 @@
 
 Form::Form() : name("Default"), GradeSign(150), GradeExecute(150)
 {
-	signed_ = false;
+    signed_ = false;
 }
 
 Form::Form( std::string const newName, int const gs, int const ge ) : name(newName), GradeSign(gs), GradeExecute(ge)
 {
-	signed_ = false;
-	if (gs < 1 || ge < 1)
-		throw GradeTooHighException();
-	else if (gs > 150 || ge > 150)
-		throw GradeTooLowException();
+    signed_ = false;
+    if (gs < 1 || ge < 1)
+        throw GradeTooHighException();
+    else if (gs > 150 || ge > 150)
+        throw GradeTooLowException();
 }
 
 Form::Form(const Form &  old ) : name(old.name), GradeSign(old.GradeSign), GradeExecute(old.GradeExecute)
 {
-	signed_ = old.signed_;
+    signed_ = old.signed_;
 }
 
 Form& Form::operator=( const Form & old )
 {
-	signed_ = old.signed_;
-	return *this;
+    signed_ = old.signed_;
+    return *this;
 }
 
 int Form::getGradeExecute() const
 {
-	return GradeExecute;
+    return GradeExecute;
 }
 
 int Form::getGradeSign() const
 {
-	return GradeSign;
+    return GradeSign;
 }
 
 const std::string Form::getName() const
 {
-	return name;
+    return name;
 }
 
-bool Form::getStatus() const
+bool Form::is_signed() const
 {
-	return signed_;
+    return signed_;
 }
 
-void Form::beSigned(Bureaucrat& obj)
-{
-	if (obj.getGrade() <= this->getGradeSign())
-		signed_ = true;
-	else
-		throw GradeTooLowException();
+void Form::beSigned(Bureaucrat& bureacrat)
+{	
+    if (signed_)
+        throw FormAlreadySignedException();
+    if (bureacrat.getGrade() > this->getGradeSign())
+        throw GradeTooLowException();
+    else
+        signed_ = true;
 }
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("Grade Too High !");
+    return ("Grade Too High !");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("Grade Too Low !");
+    return ("Grade Too Low !");
 }
 
-std::ostream& operator<<(std::ostream& out, Form& obj)
+const char *Form::FormAlreadySignedException::what() const throw()
 {
-	out << "the Form \"" << obj.getName() << "\" has GradeToSign [ " << obj.getGradeSign() << " ] and GradeToExecute [ " << obj.getGradeExecute() << " ] is ";
-	if (obj.getStatus())
-		std::cout << "[✅ SIGNED]" << std::endl;
-	else
-		std::cout << "[❌ NOT SIGNED]" << std::endl;
-	return out;
+    return ("Form Already Signed");
+}
+
+std::ostream& operator<<(std::ostream& out, Form& form)
+{
+    out << "the Form \"" << form.getName() << "\" requires GradeToSign [ " << form.getGradeSign() << " ] and GradeToExecute [ " << form.getGradeExecute() << " ] is ";
+    if (form.is_signed())
+        std::cout << "[✅ SIGNED]";
+    else
+        std::cout << "[❌ NOT SIGNED]";
+    return out;
 }
 
 Form::~Form(){}
