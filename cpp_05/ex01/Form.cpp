@@ -1,14 +1,14 @@
 #include "Form.hpp"
-
+#include "Bureaucrat.hpp"
 
 Form::Form() : name("Default"), GradeSign(150), GradeExecute(150)
 {
-	sign = false;
+	signed_ = false;
 }
 
 Form::Form( std::string const newName, int const gs, int const ge ) : name(newName), GradeSign(gs), GradeExecute(ge)
 {
-	sign = false;
+	signed_ = false;
 	if (gs < 1 || ge < 1)
 		throw GradeTooHighException();
 	else if (gs > 150 || ge > 150)
@@ -17,12 +17,12 @@ Form::Form( std::string const newName, int const gs, int const ge ) : name(newNa
 
 Form::Form(const Form &  old ) : name(old.name), GradeSign(old.GradeSign), GradeExecute(old.GradeExecute)
 {
-	sign = old.sign;
+	signed_ = old.signed_;
 }
 
 Form& Form::operator=( const Form & old )
 {
-	sign = old.sign;
+	signed_ = old.signed_;
 	return *this;
 }
 
@@ -43,13 +43,13 @@ const std::string Form::getName() const
 
 bool Form::getStatus() const
 {
-	return sign;
+	return signed_;
 }
 
 void Form::beSigned(Bureaucrat& obj)
 {
 	if (obj.getGrade() <= this->getGradeSign())
-		sign = true;
+		signed_ = true;
 	else
 		throw GradeTooLowException();
 }

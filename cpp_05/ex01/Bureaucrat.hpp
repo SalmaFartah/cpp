@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+class Form;
+
 class Bureaucrat
 {
 private:
@@ -17,6 +19,8 @@ public:
 
 	void grade_increment();
 	void grade_decrement();
+
+	void signForm(Form &MyForm);
 
 	/***************** NESTED CLASSES *****************/
 	class GradeTooHighException : public std::exception

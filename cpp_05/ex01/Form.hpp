@@ -1,14 +1,14 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "Bureaucrat.hpp"
-// class Bureaucrat;
+
+class Bureaucrat;
 
 class Form
 {
 private:
 	std::string const name;
-	bool sign;
+	bool signed_;
 	int const GradeSign;
 	int const GradeExecute;
 public:
