@@ -4,9 +4,9 @@ CXXFLAGS = -Wall -Wextra -Werror #-std=c++98
 
 NAME = exec
 
-SRC =	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRC =	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
-INC = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp
+INC =	Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -13,10 +13,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm( const std::string & newTarget );
 		ShrubberyCreationForm(const ShrubberyCreationForm & old);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm & old);
-		class FormNotSigned
-		{
-			const char *what() const throw();
-		};
+
 		void execute(Bureaucrat const & executor) const;
 		~ShrubberyCreationForm();
 };

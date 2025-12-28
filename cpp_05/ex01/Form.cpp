@@ -1,12 +1,12 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : name("Default"), GradeSign(150), GradeExecute(150)
+Form::Form() : name("unNamed"), SignGrade(150), ExecuteGrade(150)
 {
     signed_ = false;
 }
 
-Form::Form( std::string const newName, int const gs, int const ge ) : name(newName), GradeSign(gs), GradeExecute(ge)
+Form::Form( std::string const newName, int const gs, int const ge ) : name(newName), SignGrade(gs), ExecuteGrade(ge)
 {
     signed_ = false;
     if (gs < 1 || ge < 1)
@@ -15,7 +15,7 @@ Form::Form( std::string const newName, int const gs, int const ge ) : name(newNa
         throw GradeTooLowException();
 }
 
-Form::Form(const Form &  old ) : name(old.name), GradeSign(old.GradeSign), GradeExecute(old.GradeExecute)
+Form::Form(const Form &  old ) : name(old.name), SignGrade(old.SignGrade), ExecuteGrade(old.ExecuteGrade)
 {
     signed_ = old.signed_;
 }
@@ -26,14 +26,14 @@ Form& Form::operator=( const Form & old )
     return *this;
 }
 
-int Form::getGradeExecute() const
+int Form::getExecuteGrade() const
 {
-    return GradeExecute;
+    return ExecuteGrade;
 }
 
-int Form::getGradeSign() const
+int Form::getSignGrade() const
 {
-    return GradeSign;
+    return SignGrade;
 }
 
 const std::string Form::getName() const
@@ -50,7 +50,7 @@ void Form::beSigned(Bureaucrat& bureacrat)
 {	
     if (signed_)
         throw FormAlreadySignedException();
-    if (bureacrat.getGrade() > this->getGradeSign())
+    if (bureacrat.getGrade() > this->getSignGrade())
         throw GradeTooLowException();
     else
         signed_ = true;
@@ -73,7 +73,7 @@ const char *Form::FormAlreadySignedException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, Form& form)
 {
-    out << "the Form \"" << form.getName() << "\" requires GradeToSign [ " << form.getGradeSign() << " ] and GradeToExecute [ " << form.getGradeExecute() << " ] is ";
+    out << "the Form \"" << form.getName() << "\" requires GradeToSign [ " << form.getSignGrade() << " ] and GradeToExecute [ " << form.getExecuteGrade() << " ] is ";
     if (form.is_signed())
         std::cout << "[✅ SIGNED]";
     else

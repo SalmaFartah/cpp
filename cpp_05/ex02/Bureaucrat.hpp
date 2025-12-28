@@ -17,10 +17,11 @@ public:
 	std::string const getName() const;
 	int getGrade() const;
 
-	void grade_increment();
-	void grade_decrement();
+	void incrementGrade();
+	void decrementGrade();
 
 	void signForm(AForm &MyForm);
+	void executeForm(AForm const & form) const;
 
 	/***************** NESTED CLASSES *****************/
 	class GradeTooHighException : public std::exception

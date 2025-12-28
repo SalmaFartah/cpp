@@ -9,16 +9,16 @@ class AForm
 private:
 	std::string const name;
 	bool signed_;
-	int const GradeSign;
-	int const GradeExecute;
+	int const SignGrade;
+	int const ExecuteGrade;
 public:
 	AForm();
 	AForm(std::string const newName, int const gs, int const ge);
 	AForm(const AForm & old);
 	AForm& operator=(const AForm & old);
 
-	int getGradeSign() const;
-	int getGradeExecute() const;
+	int getSignGrade() const;
+	int getExecuteGrade() const;
 	const std::string getName() const;
 	bool is_signed() const;
 
@@ -38,7 +38,11 @@ public:
 	{
 		const char *what() const throw();
 	};
-	~AForm();
+	class FormNotSigned : public std::exception
+	{
+		const char *what() const throw();
+	};
+	virtual ~AForm();
 };
 
 std::ostream& operator<<(std::ostream& out, AForm& obj);

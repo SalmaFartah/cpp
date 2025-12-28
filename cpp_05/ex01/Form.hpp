@@ -9,16 +9,16 @@ class Form
 private:
 	std::string const name;
 	bool signed_;
-	int const GradeSign;
-	int const GradeExecute;
+	int const SignGrade;
+	int const ExecuteGrade;
 public:
 	Form();
 	Form(std::string const newName, int const gs, int const ge);
 	Form(const Form & old);
 	Form& operator=(const Form & old);
 
-	int getGradeSign() const;
-	int getGradeExecute() const;
+	int getSignGrade() const;
+	int getExecuteGrade() const;
 	const std::string getName() const;
 	bool is_signed() const;
 
