@@ -1,5 +1,4 @@
 #include "PresidentialPardonForm.hpp"
-#include "Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("presidential pardon", 25, 5){}
 

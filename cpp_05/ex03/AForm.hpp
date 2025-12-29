@@ -17,15 +17,17 @@ public:
 	AForm(const AForm & old);
 	AForm& operator=(const AForm & old);
 
+	/******************* GETERS *********************/
 	int getSignGrade() const;
 	int getExecuteGrade() const;
 	const std::string getName() const;
 	bool is_signed() const;
+	/************************************************/
 
 	void beSigned(Bureaucrat & obj);
-
 	virtual void execute(Bureaucrat const & executor) const = 0;
 
+	/******************* EXCEPTION CLASSES *******************/
 	class GradeTooHighException : public std::exception
 	{
 		const char *what() const throw();
@@ -42,6 +44,8 @@ public:
 	{
 		const char *what() const throw();
 	};
+	/**********************************************************/
+
 	virtual ~AForm();
 };
 

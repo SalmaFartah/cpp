@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery creation", 145, 137){}
 
@@ -32,15 +33,15 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
         std::cerr << target << "_shrubbery: permission denied" << std::endl;
         return ;
     }
-    outfile <<      "       _-_\n"
-                    "    /~~   ~~\\\n"
-                    " /~~         ~~\\\n"
-                    "{               }\n"
-                    " \\  _-     -_  /\n"
-                    "   ~  \\\\ //  ~\n"
-                    "_- -   | | _- _\n"
-                    "  _ -  | |   -_\n"
-                    "      // \\\\\n";;
+    outfile <<  "       _-_\n"
+                "    /~~   ~~\\\n"
+                " /~~         ~~\\\n"
+                "{               }\n"
+                " \\  _-     -_  /\n"
+                "   ~  \\\\ //  ~\n"
+                "_- -   | | _- _\n"
+                "  _ -  | |   -_\n"
+                "      // \\\\\n";
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}

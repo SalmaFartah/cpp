@@ -1,6 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("robotomy request", 72, 45){}
 

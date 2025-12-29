@@ -40,7 +40,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
                     "_- -   | | _- _\n"
                     "  _ -  | |   -_\n"
                     "      // \\\\\n";;
-    std::cout << executor.getName() << " execute form " << this->getName() << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}

@@ -2,8 +2,6 @@
 #include <string>
 #include "AForm.hpp"
 
-class Bureaucrat;
-
 class RobotomyRequestForm : public AForm
 {
 private:
