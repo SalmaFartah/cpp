@@ -6,7 +6,7 @@ class Form;
 class Bureaucrat
 {
 private:
-	std::string const name;
+	const std::string name;
 	int grade;
 public:
 	Bureaucrat();
@@ -14,7 +14,7 @@ public:
 	Bureaucrat( const Bureaucrat& old );
 	Bureaucrat& operator=( const Bureaucrat& old );
 
-	std::string const getName() const;
+	const std::string& getName() const;
 	int getGrade() const;
 
 	void incrementGrade();
