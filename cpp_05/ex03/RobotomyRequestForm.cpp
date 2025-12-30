@@ -28,14 +28,14 @@ void RobotomyRequestForm::execute( Bureaucrat const & executor ) const
     
     static int v;
     std::cout << "vroom vroom 🤖🛠️  ";
-    if (v % 2 == 0)
+    if (v == 0)
     {
         v = 1;
-        std::cout << target << " has been succesfully robotomized !" << std::endl;
+        std::cout << "✅ " << target << " has been succesfully robotomized !" << std::endl;
         return ;
     }
     v = 0;
-    std::cout << "robotomy FAILED !\n";
+    std::cout << "❌ " << "robotomy FAILED !\n";
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){}
