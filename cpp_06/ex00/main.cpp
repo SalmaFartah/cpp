@@ -1,17 +1,23 @@
 #include "ScalarConverter.hpp"
-#include "climits"
-#include <cmath>
-#include <string>
+#define RED "\e[0;31m"
+#define RESET "\e[0m"
 
-int main()
+int main(int ac, char **av)
 {
-    // ScalarConverter::convert(".");
-    char b = 122.9f;
-    std::string str = "4294967295";
-    int t = atoi(str.c_str());
-
-    // float g = 'A';
-    // int h = 4294967295;
-    // int h = -2147483649;
-    std::cout << t << std::endl;
+    if (ac != 2)
+    {
+        std::cerr << RED << "Enter one argument !" << RESET << std::endl;
+        return 1;
+    }
+    ScalarConverter::convert(av[1]);
 }
+
+
+// #include <iostream>
+// #include <iomanip>
+
+// int main() {
+//     int value = 9999998;
+//     std::cout << static_cast<float>(value) << std::endl;
+//     return 0;
+// }
