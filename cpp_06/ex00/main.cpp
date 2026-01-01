@@ -1,6 +1,4 @@
 #include "ScalarConverter.hpp"
-#define RED "\e[0;31m"
-#define RESET "\e[0m"
 
 int main(int ac, char **av)
 {
@@ -17,7 +15,8 @@ int main(int ac, char **av)
 // #include <iomanip>
 
 // int main() {
-//     int value = 9999998;
-//     std::cout << static_cast<float>(value) << std::endl;
+//     char c;
+//     std::cin >> c;
+//     std::cout << "[" << c << "]" << std::endl;
 //     return 0;
 // }
