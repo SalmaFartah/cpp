@@ -2,7 +2,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = exec
+NAME = convert
 
 SRC =	main.cpp ScalarConverter.cpp
 

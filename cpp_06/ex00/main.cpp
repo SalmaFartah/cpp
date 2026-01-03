@@ -9,14 +9,3 @@ int main(int ac, char **av)
     }
     ScalarConverter::convert(av[1]);
 }
-
-
-// #include <iostream>
-// #include <iomanip>
-
-// int main() {
-//     char c;
-//     std::cin >> c;
-//     std::cout << "[" << c << "]" << std::endl;
-//     return 0;
-// }
