@@ -45,55 +45,99 @@ void toChar(int r)
 		std::cout << "impossible" << std::endl;
 }
 
+std::string to_string(int value)
+{
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
+}
+
 void intChecker( std::string& str )
-{   
-	std::string cut(str);
-	if (str[0] == '-' || str[0] == '+')
-		cut = str.substr(1, str.length());
-	if (cut.find_first_not_of("0123456789") == std::string::npos)
-	{
-		long number = std::atol(str.c_str());
-		if (number > INT_MAX || number < INT_MIN)
-			return ;
-		toChar(number);
-		std::cout << "int: " << number << std::endl;
+{
+	char *check;
+	errno = 0;
 
-		std::cout << "float: " << static_cast<float>(number);
-		if (str.length() < 7 || number == 0)
-			std::cout << ".0";
-		std::cout << "f" << std::endl;
-
-		std::cout << "double: " << static_cast<double>(number);
-		if (str.length() < 7 || number == 0)
-			std::cout << ".0";
-		std::cout << std::endl;
-		throw std::exception();
-	}
+	long b = std::strtol(str.c_str(), &check, 10);
+	if (*check)
+		return ;
+	toChar(b);
+	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
+		std::cout << "int: impossible" << std::endl;
+	else	
+		std::cout << "int: " << static_cast<int>(b) << std::endl;
+	std::cout << "float: " << static_cast<float>(b);
+	if (to_string(b).length() < 7)
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(b);
+	if (to_string(b).length() < 7)
+		std::cout << ".0";
+	std::cout << std::endl;
+	throw std::exception();
 }
 
 void floatChecker( std:: string& str )
 {
-	std::string cut(str);
-	if (str[0] == '-' || str[0] == '+')
-		cut = str.substr(1, str.length());
+	char *check;
+	errno = 0;
 
-	if (str[str.length() - 1] == 'f')
-		cut = str.substr(1, str.length() - 2);
+	double b = std::strtod(str.c_str(), &check);
+	if (!*check || (*check && *check != 'f') || check[1] || str.find(".") == std::string::npos)
+		return ;
+	toChar(b);
+	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(b) << std::endl;
+	std::cout << "float: " << static_cast<float>(b);
+	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
+	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(b);
+	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
+	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
+		std::cout << ".0";
+	std::cout << std::endl;
+	throw std::exception();
+}
 
-	size_t start = cut.find_first_not_of("0123456789");
-	size_t end = cut.find_last_not_of("0123456789");
+void doubleChecker(std::string& str)
+{
+	char *check;
+	errno = 0;
 
-	if (end == start && cut[start] == '.')
+	double b = std::strtod(str.c_str(), &check);
+	if (*check || str.find(".") == std::string::npos)
+		return ;
+	toChar(b);
+	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(b) << std::endl;
+	std::cout << "float: " << static_cast<float>(b);
+	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
+	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+	std::cout << "double: " << b;
+	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
+	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
+		std::cout << ".0";
+	std::cout << std::endl;
+	throw std::exception();
+}
+
+void limitsCheck(std::string& str)
+{
+	if (str == "nanf" || str == "-inff" || str == "+inff" || str == "inff")
 	{
-		double r = std::atof(str.c_str());
-		toChar(r);
-		std::cout << "int: ";
-		if (r > INT_MAX || r < INT_MIN)
-			std::cout << "impossible" << std::endl;
-		else
-			std::cout << static_cast<int>(r) << std::endl;
-		std::cout << "float: " << static_cast<float>(r) << "f" << std::endl;
-		std::cout << "double: " << r << std::endl;
+		std::cout << "char: impossible\nint: impossible\nfloat: " << str << "\ndouble: " << str.substr(0, str.length() - 1) << std::endl;	
+		throw std::exception();
+	}
+	else if (str == "nan" || str == "-inf" || str == "+inf" || str == "inf")
+	{
+		std::cout << "char: impossible\nint: impossible\nfloat: " << str + "f" << "\ndouble: " << str << std::endl;	
 		throw std::exception();
 	}
 }
@@ -103,16 +147,18 @@ void ScalarConverter::convert( std::string str )
 	try
 	{
 		charChecker(str);
-		str = TrimStr(str);
 		if (str.empty())
 			return ;
 		intChecker(str);
 		floatChecker(str);
+		doubleChecker(str);
+		limitsCheck(str);
 	}
 	catch(const std::exception& e)
 	{
 		return ;
 	}
+	std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 }
 
 ScalarConverter::~ScalarConverter()
