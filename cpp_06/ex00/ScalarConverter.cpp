@@ -13,23 +13,14 @@ ScalarConverter& ScalarConverter::operator=( const ScalarConverter& old )
 	return *this;
 }
 
-std::string TrimStr(const std::string& str)
-{
-	size_t start = str.find_first_not_of("	 ");
-	if (start == std::string::npos)
-		return "";
-	size_t end = str.find_last_not_of("	 ");
-	return str.substr(start, end - start + 1);
-}
-
 void charChecker( std::string& str )
 {
 	if (str.length() == 1 && !std::isdigit(str[0]) && std::isprint(str[0]))
 	{
 		std::cout << "char: \'" << str[0] << "\'" << std::endl;
 		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
-		std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
-		std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
+		std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(str[0]) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(str[0]) << std::endl;
 		throw std::exception();
 	}
 }
@@ -45,13 +36,6 @@ void toChar(int r)
 		std::cout << "impossible" << std::endl;
 }
 
-std::string to_string(int value)
-{
-    std::ostringstream oss;
-    oss << value;
-    return oss.str();
-}
-
 void intChecker( std::string& str )
 {
 	char *check;
@@ -65,14 +49,10 @@ void intChecker( std::string& str )
 		std::cout << "int: impossible" << std::endl;
 	else	
 		std::cout << "int: " << static_cast<int>(b) << std::endl;
-	std::cout << "float: " << static_cast<float>(b);
-	if (to_string(b).length() < 7)
-		std::cout << ".0";
-	std::cout << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(b);
-	if (to_string(b).length() < 7)
-		std::cout << ".0";
-	std::cout << std::endl;
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(b) << std::endl;
 	throw std::exception();
 }
 
@@ -82,23 +62,18 @@ void floatChecker( std:: string& str )
 	errno = 0;
 
 	double b = std::strtod(str.c_str(), &check);
-	if (!*check || (*check && *check != 'f') || check[1] || str.find(".") == std::string::npos)
+	if (!*check || *check != 'f' || check[1] || str.find(".") == std::string::npos)
 		return ;
+
 	toChar(b);
 	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(b) << std::endl;
-	std::cout << "float: " << static_cast<float>(b);
-	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
-	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
-		std::cout << ".0";
-	std::cout << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(b);
-	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
-	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
-		std::cout << ".0";
-	std::cout << std::endl;
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
+	std::cout << "double: " << b << std::endl;
 	throw std::exception();
 }
 
@@ -115,16 +90,10 @@ void doubleChecker(std::string& str)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(b) << std::endl;
-	std::cout << "float: " << static_cast<float>(b);
-	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
-	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
-		std::cout << ".0";
-	std::cout << "f" << std::endl;
-	std::cout << "double: " << b;
-	if ((b == static_cast<int>(b) && to_string(static_cast<int>(b)).length() < 7)
-	|| (to_string(static_cast<int>(b)).length() == 5 && str[str.find(".") + 1] == '0'))
-		std::cout << ".0";
-	std::cout << std::endl;
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
+	std::cout << "double: " << b << std::endl;
 	throw std::exception();
 }
 

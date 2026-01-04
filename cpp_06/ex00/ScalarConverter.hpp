@@ -3,6 +3,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <climits>
+#include <iomanip>
+#include <cerrno>
+
 #define RED "\e[0;31m"
 #define RESET "\e[0m"
 
