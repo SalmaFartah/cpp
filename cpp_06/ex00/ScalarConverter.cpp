@@ -19,7 +19,7 @@ void charChecker( std::string& str )
 	{
 		std::cout << "char: \'" << str[0] << "\'" << std::endl;
 		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
-		std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(str[0]) << "f" << std::endl;
+		std::cout << "float: " << static_cast<float>(str[0]) << "f" << std::endl;
 		std::cout << "double: " << static_cast<double>(str[0]) << std::endl;
 		throw std::exception();
 	}
@@ -41,18 +41,14 @@ void intChecker( std::string& str )
 	char *check;
 	errno = 0;
 
-	long b = std::strtol(str.c_str(), &check, 10);
-	if (*check)
+	long number = std::strtol(str.c_str(), &check, 10);
+	if (*check || errno == ERANGE || number > INT_MAX || number < INT_MIN)
 		return ;
-	toChar(b);
-	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
-		std::cout << "int: impossible" << std::endl;
-	else	
-		std::cout << "int: " << static_cast<int>(b) << std::endl;
+	toChar(number);
+	std::cout << "int: " << static_cast<int>(number) << std::endl;
 
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(b) << std::endl;
+	std::cout << "float: " << static_cast<float>(number) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(number) << std::endl;
 	throw std::exception();
 }
 
@@ -61,19 +57,20 @@ void floatChecker( std:: string& str )
 	char *check;
 	errno = 0;
 
-	double b = std::strtod(str.c_str(), &check);
+	double number = std::strtod(str.c_str(), &check);
 	if (!*check || *check != 'f' || check[1] || str.find(".") == std::string::npos)
 		return ;
 
-	toChar(b);
-	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
+	toChar(number);
+	if (errno == ERANGE || number > INT_MAX || number < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
-		std::cout << "int: " << static_cast<int>(b) << std::endl;
+		std::cout << "int: " << static_cast<int>(number) << std::endl;
 
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
-	std::cout << "double: " << b << std::endl;
+	float floatP = static_cast<float>(number);
+
+	std::cout << "float: " << floatP << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(floatP) << std::endl;
 	throw std::exception();
 }
 
@@ -82,18 +79,17 @@ void doubleChecker(std::string& str)
 	char *check;
 	errno = 0;
 
-	double b = std::strtod(str.c_str(), &check);
+	double number = std::strtod(str.c_str(), &check);
 	if (*check || str.find(".") == std::string::npos)
 		return ;
-	toChar(b);
-	if (errno == ERANGE || b > INT_MAX || b < INT_MIN)
+	toChar(number);
+	if (errno == ERANGE || number > INT_MAX || number < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
-		std::cout << "int: " << static_cast<int>(b) << std::endl;
+		std::cout << "int: " << static_cast<int>(number) << std::endl;
 
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: " << static_cast<float>(b) << "f" << std::endl;
-	std::cout << "double: " << b << std::endl;
+	std::cout << "float: " << static_cast<float>(number) << "f" << std::endl;
+	std::cout << "double: " << number << std::endl;
 	throw std::exception();
 }
 
@@ -111,17 +107,29 @@ void limitsCheck(std::string& str)
 	}
 }
 
+std::string TrimStr(const std::string& str)
+{
+	size_t start = str.find_first_not_of(" \t\n\r\f\v");
+	if (start == std::string::npos)
+		return "";
+	size_t end = str.find_last_not_of(" \t\n\r\f\v");
+	return str.substr(start, end - start + 1);
+}
+
 void ScalarConverter::convert( std::string str )
 {
 	try
 	{
+		std::cout << std::fixed << std::setprecision(1);
 		charChecker(str);
-		if (str.empty())
-			return ;
-		intChecker(str);
-		floatChecker(str);
-		doubleChecker(str);
-		limitsCheck(str);
+		str = TrimStr(str);
+		if (!str.empty())
+		{
+			intChecker(str);
+			floatChecker(str);
+			doubleChecker(str);
+			limitsCheck(str);
+		}
 	}
 	catch(const std::exception& e)
 	{
@@ -130,6 +138,4 @@ void ScalarConverter::convert( std::string str )
 	std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 }
 
-ScalarConverter::~ScalarConverter()
-{
-}
+ScalarConverter::~ScalarConverter(){}

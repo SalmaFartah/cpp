@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
-#include <cstdlib>
 #include <iostream>
-#include <sstream>
 #include <climits>
 #include <iomanip>
 #include <cerrno>
@@ -13,9 +11,9 @@
 class ScalarConverter
 {
 	ScalarConverter();// private ctor to make the class not instantiable..
-public:
 	ScalarConverter( const ScalarConverter& old );
 	ScalarConverter& operator=( const ScalarConverter& old );
+public:
 	static void convert( std::string str );
 	~ScalarConverter();
 };
