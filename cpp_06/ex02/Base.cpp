@@ -13,9 +13,7 @@ Base * generate(void)
 		return new A;
 	if (t == 1)
 		return new B;
-	if (t == 2)
-		return new C;			
-	return NULL;
+	return new C;
 }
 
 void identify(Base* p)

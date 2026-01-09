@@ -95,12 +95,12 @@ void doubleChecker(std::string& str)
 
 void limitsCheck(std::string& str)
 {
-	if (str == "nanf" || str == "-inff" || str == "+inff" || str == "inff")
+	if (str == "nanf" || str == "-inff" || str == "+inff")
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: " << str << "\ndouble: " << str.substr(0, str.length() - 1) << std::endl;	
 		throw std::exception();
 	}
-	else if (str == "nan" || str == "-inf" || str == "+inf" || str == "inf")
+	else if (str == "nan" || str == "-inf" || str == "+inf")
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: " << str + "f" << "\ndouble: " << str << std::endl;	
 		throw std::exception();
