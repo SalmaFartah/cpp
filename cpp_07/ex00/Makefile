@@ -10,13 +10,13 @@ INC =	whatever.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
+%.o : %.cpp $(INC)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-
-%.o : %.cpp $(INC)
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :
 	@rm -rf $(OBJ)

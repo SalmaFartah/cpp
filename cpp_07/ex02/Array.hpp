@@ -12,6 +12,7 @@ public:
 	Array ( const Array& old );
 	Array& operator=( const Array& old );
 	T& operator[]( int n );
+	const T& operator[]( int n ) const ;
 	int size( void ) const;
 	~Array();
 };

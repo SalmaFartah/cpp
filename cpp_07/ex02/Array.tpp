@@ -48,6 +48,14 @@ T& Array<T>::operator[]( int n )
 	return array[n];
 }
 
+template<typename T>
+const T& Array<T>::operator[]( int n ) const
+{
+	if (n < 0 || n >= _size_)
+		throw std::out_of_range("indexing out of bounds !");
+	return array[n];
+}
+
 template <typename T> Array<T>::~Array()
 {
 	delete[] array;

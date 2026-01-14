@@ -1,23 +1,23 @@
 #pragma once
 #include <iostream>
 
-template <typename T> void swap(T& arg1, T& arg2)
+template <typename T> void swap(T& a, T& b)
 {
-	T tmp = arg1;
-	arg1 = arg2;
-	arg2 = tmp;
+	T tmp = a;
+	a = b;
+	b = tmp;
 }
 
-template <typename T> T min(T& arg1, T& arg2)
+template <typename T> T min(T& a, T& b)
 {
-	if (arg1 < arg2)
-		return arg1;
-	return arg2;
+	if (a < b)
+		return a;
+	return b;
 }
 
-template <typename T> T max(T& arg1, T& arg2)
+template <typename T> T max(T& a, T& b)
 {
-	if (arg1 > arg2)
-		return arg1;
-	return arg2;
+	if (a > b)
+		return a;
+	return b;
 }
