@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-Span::Span(){}
+Span::Span(): MaxLength(0){}
 
 Span::Span( unsigned int N )
 {
@@ -23,22 +23,52 @@ Span& Span::operator=( const Span& old )
 void Span::addNumber( int Number )
 {
 	if (elements.size() == MaxLength)
-		throw SpanIsFull();
+		throw SpanIsFull("Span is full !");
 	elements.push_back(Number);
+}
+
+int Span::shortestSpan()
+{
+	if (!elements.size() || elements.size() == 1)
+		throw SpanNotFound();
+
+	int shortSpan = INT_MAX;
+	for (size_t i = 0; i < elements.size(); i++)
+	{
+		for (size_t j = i + 1; j < elements.size(); j++)
+		{
+			if (std::abs(elements[i] - elements[j]) < shortSpan)
+				shortSpan = std::abs(elements[i] - elements[j]);
+		}
+	}
+	return shortSpan;
 }
 
 int Span::longestSpan()
 {
-	std::vector<int>::iterator maxElement =  std::max_element(elements.begin(), elements.end());
-	std::vector<int>::iterator minElement = std::min_element(elements.begin(), elements.end());
+	if (!elements.size() || elements.size() == 1)
+		throw SpanNotFound();
+	_it maxElement =  std::max_element(elements.begin(), elements.end());
+	_it minElement = std::min_element(elements.begin(), elements.end());
 	return *maxElement - *minElement;
 }
 
+
 const char *Span::SpanIsFull::what() const throw()
 {
-	return "Span is full !";
+	return message.c_str();
 }
 
-Span::~Span()
+Span::SpanIsFull::SpanIsFull(const std::string& message)
 {
+	this->message = message;
 }
+
+Span::SpanIsFull::~SpanIsFull() throw(){}
+
+const char *Span::SpanNotFound::what() const throw()
+{
+	return "Span not found !";
+}
+
+Span::~Span(){}
