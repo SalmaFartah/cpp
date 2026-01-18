@@ -5,16 +5,12 @@
 template <typename T>
 class MutantStack : public std::stack<T>
 {
-    private:
-        
-    public:
-        MutantStack();
-        ~MutantStack();
-        class iterator : public std::__wrap_iter<T*>
-        {
-        };
-        iterator& begin();
-        iterator& end();
+	public:
+		typedef T* iterator;
+		MutantStack();
+		~MutantStack();
+		iterator begin();
+		iterator end();
 
 };
 

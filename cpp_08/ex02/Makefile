@@ -1,12 +1,12 @@
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror #-std=c++98
 
 NAME = exec
 
 SRC =	main.cpp
 
-INC =	MutantStack.hpp
+INC =	MutantStack.hpp MutantStack.tpp
 
 OBJ = $(SRC:.cpp=.o)
 
