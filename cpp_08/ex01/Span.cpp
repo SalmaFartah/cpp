@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <climits>
 
 Span::Span(): MaxLength(0){}
 

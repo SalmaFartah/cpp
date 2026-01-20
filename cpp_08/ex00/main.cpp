@@ -1,6 +1,6 @@
-#include <array>
-#include <vector>
 #include "easyfind.hpp"
+#include <list>
+#include <vector>
 
 int main()
 {
@@ -14,11 +14,12 @@ int main()
 		int position = ::easyfind(vc, 42);
 		std::cout << "the value 42 is found at position: " << position << std::endl;
 
-		std::cout << "\n-> use easyfind() on an std::array<int> with non-existed value:" << std::endl;
-		std::array<int, 10> arr;
-		for (size_t i = 0; i < arr.size(); i++)
-			arr[i] = 6589;
-		position = ::easyfind(arr, 42);
+		std::cout << "\n-> use easyfind() on an std::list<int> with non-existed value:" << std::endl;
+		std::list<int> lst;
+		lst.push_back(142);
+		lst.push_back(142);
+		lst.push_back(142);
+		position = ::easyfind(lst, 42);
 		std::cout << "the value 42 is found at position: " << position << std::endl;
 	}
 	catch(const std::exception& e)
