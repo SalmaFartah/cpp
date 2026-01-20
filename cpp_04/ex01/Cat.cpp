@@ -21,7 +21,6 @@ Cat& Cat::operator=(  const Cat& old )
 		CatBrain = new Brain(*old.CatBrain);
 		Animal::operator=(old);
 	}
-	
 	return *this;
 }
 

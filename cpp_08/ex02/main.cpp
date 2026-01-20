@@ -1,7 +1,5 @@
 #include "MutantStack.hpp"
-// #include <stack>
-// #include <vector>
-#include <array>
+#include <vector>
 #include <iostream>
 
 
