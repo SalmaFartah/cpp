@@ -10,9 +10,9 @@ class MutantStack : public std::stack<T>
 		MutantStack();
 		MutantStack( const MutantStack& old);
 		MutantStack& operator=( const MutantStack& old);
-		~MutantStack();
 		iterator begin();
 		iterator end();
+		~MutantStack();
 };
 
 #include "MutantStack.tpp"

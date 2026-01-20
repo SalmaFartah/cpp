@@ -54,7 +54,6 @@ int Span::longestSpan()
 	return *maxElement - *minElement;
 }
 
-
 const char *Span::SpanIsFull::what() const throw()
 {
 	return message.c_str();
