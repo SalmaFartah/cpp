@@ -1,30 +1,32 @@
-#include "MutantStack.hpp"
-#include <vector>
 #include <iostream>
-
+#include "MutantStack.hpp"
 
 int main()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
+
 	mstack.push(5);
-	mstack.push(17);
-	std::cout << "top element: " << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << "size: " << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	//[...]
-	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-	std::stack<int> s(mstack);
-	return 0;
+    mstack.push(10);
+    mstack.push(15);
+    std::cout << "Top element: " << mstack.top() << std::endl;
+
+    mstack.pop();
+    std::cout << "Top after pop: " << mstack.top() << std::endl;
+
+    mstack.push(20);
+    mstack.push(25);
+    std::cout << "MutantStack elements: ";
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
+    for (; it != ite; ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+
+	MutantStack<int> emptyStack;
+    std::cout << "\nEmpty stack size: " << emptyStack.size() << std::endl;
+
+    if (emptyStack.begin() == emptyStack.end())
+        std::cout << "the stack is empty !" << std::endl;
+
+    return 0;
 }

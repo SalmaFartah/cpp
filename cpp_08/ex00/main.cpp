@@ -7,10 +7,12 @@ int main()
 	try
 	{
 		std::cout << "-> use easyfind() on an std::vector<int> with existed value:" << std::endl;
-		std::vector<int> vc(5);
-		for (unsigned int i = 0; i < vc.size(); i++)
-			vc[i] = 32;
-		vc[2] = 42;
+		std::vector<int> vc;
+		vc.push_back(15);
+		vc.push_back(15);
+		vc.push_back(42);
+		vc.push_back(12);
+		vc.push_back(23);
 		int position = ::easyfind(vc, 42);
 		std::cout << "the value 42 is found at position: " << position << std::endl;
 
