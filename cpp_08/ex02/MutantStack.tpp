@@ -18,14 +18,14 @@ MutantStack<T>& MutantStack<T>::operator=( const MutantStack& old )
 
 template <typename T> 
 typename MutantStack<T>::iterator MutantStack<T>::begin()
-{
-	return &this->top() - this->size() + 1;
+{	
+	return this->c.begin();
 }
 
 template <typename T> 
 typename MutantStack<T>::iterator MutantStack<T>::end()
 {
-	return &this->top() + 1;
+	return this->c.end();
 }
 
 template <typename T> 

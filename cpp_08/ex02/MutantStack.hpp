@@ -5,7 +5,7 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		typedef T* iterator;
+		typedef typename std::deque<T>::iterator iterator;
 		MutantStack();
 		MutantStack( const MutantStack& old );
 		MutantStack& operator=( const MutantStack& old );
