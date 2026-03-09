@@ -6,15 +6,18 @@
 
 int main()
 {
-    Base* base = generate();
+    // Base* base = generate();
 
-    std::cout << "Identify by pointer: ";
-    identify(base);
+    // std::cout << "Identify by pointer: ";
+    // identify(base);
 
-    std::cout << "Identify by reference: ";
-    identify(*base);
+    // std::cout << "Identify by reference: ";
+    // identify(*base);
 
-    delete base;
+    Base * p = new Base;
+    identify(p);
+    identify(*p);
+    // delete base;
 
     return 0;
 }

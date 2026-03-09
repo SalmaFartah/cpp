@@ -28,7 +28,7 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-	try 
+	try
 	{
 		A x = dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;

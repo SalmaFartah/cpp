@@ -139,3 +139,4 @@ void ScalarConverter::convert( std::string str )
 }
 
 ScalarConverter::~ScalarConverter(){}
+
