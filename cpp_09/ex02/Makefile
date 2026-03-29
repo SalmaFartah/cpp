@@ -1,21 +1,19 @@
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
-
 NAME = PmergeMe
 
-SRC =	main.cpp PmergeMe.cpp
+CXXFLAGS = -Wall -Wextra -Werror  -std=c++98 -fsanitize=address
 
-INC =	PmergeMe.hpp
+SRC = main.cpp  PmergeMe.cpp parse.cpp jacob.cpp binaryInsertion.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ = ${SRC:.cpp=.o}
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME) : $(OBJ)
 	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-
-%.o : %.cpp $(INC)
+	
+%.o : %.cpp PmergeMe.hpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean :
