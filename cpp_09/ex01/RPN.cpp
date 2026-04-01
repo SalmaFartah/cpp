@@ -7,7 +7,7 @@ bool RPN::onlySpace(const std::string& mystr)
 		if (!std::isspace(mystr[i]))
 			return false;
 	}
-	return true;	
+	return true;
 }
 
 RPN::RPN(char *str): inp(str)
@@ -28,10 +28,9 @@ void RPN::processRpn()
 	{
 		if (std::isdigit(inp[i]))
 		{
-			char nb[2];
-			*nb = inp[i];
-			nb[1] = 0;
-			stk.push(atoi(nb));
+			std::string nb;
+			nb.push_back(inp[i]);
+			stk.push(atoi(nb.c_str()));
 		}
 		else if (stk.size() >= 2 && !std::isspace(inp[i]))
 		{

@@ -1,18 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(){}
-
-BitcoinExchange::BitcoinExchange( const BitcoinExchange& old)
-{
-	*this = old;
-}
-
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& old)
-{
-	this->dataBase = old.dataBase;
-	return *this;
-}
-
 BitcoinExchange::BitcoinExchange(const char* filename): input(filename)
 {
 	if (!input)
@@ -21,7 +8,7 @@ BitcoinExchange::BitcoinExchange(const char* filename): input(filename)
 
 void BitcoinExchange::set_dataBase()
 {
-	std::ifstream file("data.csv");
+	std::ifstream file("data.csv"); // open data.csv file
 	std::string line;
 	std::getline(file, line);
 	while (std::getline(file, line))
@@ -60,6 +47,7 @@ std::string BitcoinExchange::extractDate(std::istringstream &linestream)
 {
 	std::string date;
 	struct tm tim;
+	// take "2009-01-02 "
 	if (!std::getline(linestream, date, '|') || date.length() != 11)
 		throw std::runtime_error("Error: bad input => " + date);
 
@@ -71,9 +59,10 @@ std::string BitcoinExchange::extractDate(std::istringstream &linestream)
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && tim.tm_mday == 31)
 		throw std::runtime_error("Error: bad input => " + date);
 
-	if (!is_leap(tim.tm_year + 1900) && month == 2 && tim.tm_mday > 28)
+	if (!is_leap(tim.tm_year + 1900) && month == 2 && tim.tm_mday > 28) // check for leap year
 		throw std::runtime_error("Error: bad input => " + date);
 
+	// remove space from last of the date taken previousely to search for in the std::map
 	date.erase(date.find(' '));
 	return date;
 }
@@ -81,7 +70,10 @@ std::string BitcoinExchange::extractDate(std::istringstream &linestream)
 void BitcoinExchange::build()
 {
 	std::string fstline;
-	if (!std::getline(input, fstline) || fstline != "date | value")
+	if (!std::getline(input, fstline))
+		throw std::runtime_error("Error: emty file.");
+
+	if (fstline != "date | value")
 		throw std::runtime_error("Error: invalid head.");
 
 	set_dataBase();
@@ -93,9 +85,11 @@ void BitcoinExchange::build()
 		{
 			std::string date = extractDate(linestream);
 			double value = extractValue(line.substr(linestream.tellg()));
-			mapIt it = dataBase.lower_bound(date);
+			mapIt it = dataBase.lower_bound(date); // returns iterator to the >= key
+			// check if no key matches the date and ther is no lower
 			if (it == dataBase.begin() && !dataBase.count(date))
 				throw std::runtime_error("Error: date not found => " + date);
+			// there is lower but not the date exact
 			if (!dataBase.count(date))
 				it--;
 			std::cout << date << " => " << value << " = " << value * it->second << std::endl;

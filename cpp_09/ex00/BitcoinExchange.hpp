@@ -12,18 +12,21 @@ class BitcoinExchange
 {
 	std::map<std::string, double> dataBase;
 public:
-	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& old);
-	BitcoinExchange& operator=(const BitcoinExchange& old);
 	BitcoinExchange(const char* filename);
 	void build();
 	~BitcoinExchange();
 private:
+
 	std::ifstream input;
 	void set_dataBase();
 	std::string extractDate(std::istringstream &linestream);
 	double extractValue(std::string line);
 	bool is_leap(int year);
+
+	/************************ ORTHODOX *********************/
+	BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange& old);
+	BitcoinExchange& operator=(const BitcoinExchange& old);
 
 	typedef std::map<std::string, double>::iterator mapIt;
 };
