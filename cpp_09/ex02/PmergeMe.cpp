@@ -1,34 +1,37 @@
 #include "PmergeMe.hpp"
 
 //********************************************* PRINT ******************************************** */
-void PmergeMe::pree(std::vector<Element> vec)
+void PmergeMe::pree(std::vector<ElementV> vec)
 {
 	for (size_t i = 0; i < vec.size(); i++)
-		std::cout << vec[i].value << " ";
-	std::cout << std::endl;
+		std::cout << vec[i].value << "\n";
+	// std::cout << std::endl;
 }
 
-void PmergeMe::printAfter(std::vector<Element> fin, clock_t start)
+void PmergeMe::printAfter(std::vector<ElementV> fin, clock_t start)
 {
-	clock_t end = clock();
-	std::cout << "after:   ", pree(fin);
+	(void)start;
+	// clock_t end = clock();
+	 pree(fin);
 	std::cout << std::fixed << std::setprecision(5);
-	std::cout << "Time to process a range of " << fin.size() << " elements with std::vector : "
-	<< (double)(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
+	// std::cout << "Time to process a range of " << fin.size() << " elements with std::vector : "
+	// << (double)(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 //********************************************* PARSE ******************************************** */
 PmergeMe::PmergeMe(char **av)
 {
-	Element elemtents;
+	ElementV elemv;
+	ElementD elemd;
 	for (int i = 1; av[i]; i++)
 	{
 		unsigned int nb = parseNumber(av[i]);
-		elemtents.value = nb; // initlize our vector of struct element with vl and empty chain
-		vec.push_back(elemtents);
-		deq.push_back(elemtents);
+		elemv.value = nb; // initlize our vector of struct element with vl and empty chain
+		elemd.value = nb;
+		vec.push_back(elemv);
+		deq.push_back(elemd);
 	}
-	std::cout << "before:  "; pree(vec);
+	// std::cout << "before:  "; pree(vec);
 }
 
 void PmergeMe::TrimStr(std::string& str)
@@ -59,12 +62,12 @@ void PmergeMe::sort()
 		printAfter(vec, start);
 		return ;
 	}
-	std::vector<Element> sorted = fordJohnsonVEC(vec);
+	std::vector<ElementV> sorted = fordJohnsonVEC(vec);
 	printAfter(sorted, start);
 	start = clock();
-	std::deque<Element> sortedDeq = fordJohnsonDEQ(deq);
-	std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : "
-	<< (double)(clock() - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
+	std::deque<ElementD> sortedDeq = fordJohnsonDEQ(deq);
+	// std::cout << "Time to process a range of " << sortedDeq.size() << " elements with std::deque : "
+	// << (double)(clock() - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
 }
 
 //******************************************************************************************* */
@@ -73,12 +76,12 @@ void PmergeMe::sort()
 /*                                                                                            */
 //******************************************************************************************* */
 
-std::vector<Element> PmergeMe::fordJohnsonVEC(std::vector<Element> elements)
+std::vector<ElementV> PmergeMe::fordJohnsonVEC(std::vector<ElementV> elements)
 {
 	if (elements.size() == 1)
 		return elements;
 
-	Element stragler;
+	ElementV stragler;
 	bool hasStragler = false;
 	if (elements.size() % 2)
 	{
@@ -87,12 +90,12 @@ std::vector<Element> PmergeMe::fordJohnsonVEC(std::vector<Element> elements)
 		elements.pop_back();
 	}
 
-	std::vector<Element> winners;
+	std::vector<ElementV> winners;
 	pairingVEC(winners, elements); // Each winner now carries its loser in its chain!
 
-	std::vector<Element> mainChain = fordJohnsonVEC(winners);
+	std::vector<ElementV> mainChain = fordJohnsonVEC(winners);
 
-	std::vector<Element> pend;
+	std::vector<ElementV> pend;
 	// loop thrgout mainChain and rm last loser of each one and add them to the pends
 	for (size_t i = 0; i < mainChain.size(); i++) 
 	{
@@ -117,7 +120,7 @@ std::vector<Element> PmergeMe::fordJohnsonVEC(std::vector<Element> elements)
 	return mainChain;
 }
 
-void PmergeMe::pairingVEC(std::vector<Element>& winners, std::vector<Element> elements) // 
+void PmergeMe::pairingVEC(std::vector<ElementV>& winners, std::vector<ElementV> elements) // 
 {
 	for (size_t i = 0; i < elements.size(); i += 2)
 	{
@@ -176,7 +179,7 @@ size_t PmergeMe::jacobVEC(size_t nb)
 }
 //************************************* BINARY SEARCH ****************************************** */
 
-void PmergeMe::insertloserVEC(Element loser, std::vector<Element>& mainChain, int start, int end)
+void PmergeMe::insertloserVEC(ElementV loser, std::vector<ElementV>& mainChain, int start, int end)
 {
 	int range = end - start;
 	if (range == 0)
@@ -193,9 +196,9 @@ void PmergeMe::insertloserVEC(Element loser, std::vector<Element>& mainChain, in
         insertloserVEC(loser, mainChain, mid + start + 1, end);
 }
 
-void PmergeMe::BinaryInsertionVEC(std::vector<int> jacobOrder, std::vector<Element> pend, std::vector<Element>& mainChain)
+void PmergeMe::BinaryInsertionVEC(std::vector<int> jacobOrder, std::vector<ElementV> pend, std::vector<ElementV>& mainChain)
 {
-	std::vector<Element> orderedPend;
+	std::vector<ElementV> orderedPend;
 	std::vector<int> winPos;
 
 	// loop through jacob vector and take the elements with its winner position in mainChain
@@ -220,12 +223,12 @@ void PmergeMe::BinaryInsertionVEC(std::vector<int> jacobOrder, std::vector<Eleme
 /*                                                                                            */
 //******************************************************************************************* */
 
-std::deque<Element> PmergeMe::fordJohnsonDEQ(std::deque<Element> elements)
+std::deque<ElementD> PmergeMe::fordJohnsonDEQ(std::deque<ElementD> elements)
 {
 	if (elements.size() == 1)
 		return elements;
 
-	Element stragler;
+	ElementD stragler;
 	bool hasStragler = false;
 	if (elements.size() % 2)
 	{
@@ -234,12 +237,12 @@ std::deque<Element> PmergeMe::fordJohnsonDEQ(std::deque<Element> elements)
 		elements.pop_back();
 	}
 
-	std::deque<Element> winners;
+	std::deque<ElementD> winners;
 	pairingDEQ(winners, elements); // Each winner now carries its loser in its chain!
 
-	std::deque<Element> mainChain = fordJohnsonDEQ(winners);
+	std::deque<ElementD> mainChain = fordJohnsonDEQ(winners);
 
-	std::deque<Element> pend;
+	std::deque<ElementD> pend;
 	// loop thrgout mainChain and rm last loser of each one and add them to the pends
 	for (size_t i = 0; i < mainChain.size(); i++)
 	{
@@ -264,7 +267,7 @@ std::deque<Element> PmergeMe::fordJohnsonDEQ(std::deque<Element> elements)
 	return mainChain;
 }
 
-void PmergeMe::pairingDEQ(std::deque<Element>& winners, std::deque<Element> elements)
+void PmergeMe::pairingDEQ(std::deque<ElementD>& winners, std::deque<ElementD> elements)
 {
 	for (size_t i = 0; i < elements.size(); i += 2)
 	{
@@ -323,7 +326,7 @@ size_t PmergeMe::jacobDEQ(size_t nb)
 }
 //************************************* BINARY SEARCH ****************************************** */
 
-void PmergeMe::insertloserDEQ(Element loser, std::deque<Element>& mainChain, int start, int end)
+void PmergeMe::insertloserDEQ(ElementD loser, std::deque<ElementD>& mainChain, int start, int end)
 {
 	int range = end - start;
 	if (range == 0)
@@ -340,9 +343,9 @@ void PmergeMe::insertloserDEQ(Element loser, std::deque<Element>& mainChain, int
         insertloserDEQ(loser, mainChain, mid + start + 1, end);
 }
 
-void PmergeMe::BinaryInsertionDEQ(std::deque<int> jacobOrder, std::deque<Element> pend, std::deque<Element>& mainChain)
+void PmergeMe::BinaryInsertionDEQ(std::deque<int> jacobOrder, std::deque<ElementD> pend, std::deque<ElementD>& mainChain)
 {
-	std::deque<Element> orderedPend;
+	std::deque<ElementD> orderedPend;
 	std::deque<int> winPos;
 
 	// loop through jacob deque and take the elements with its winner position in mainChain 
